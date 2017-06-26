@@ -1,0 +1,212 @@
+@font-face {
+  font-family: 'OpenSansCondLight';
+  src: url('../fonts/OpenSans-CondLight.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/OpenSans-CondLight.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/OpenSans-CondLight.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.wrapper {
+    padding: 0;
+    margin: 0 auto;
+    width: 1400px;
+    height: 1715px;
+    position: relative;
+}
+
+header {
+    /* padding: 0 200px; */
+    height: 230px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(220,220,220);
+}
+
+section.info {
+    /* width: 100%; */
+    height: 100%;
+    margin: 0 200px;
+    padding: 0 10px;
+}
+
+article.companyTitle {
+    height: 100%;
+    padding: 63px 0px;
+    position: relative;
+    color: rgb(119,119,119);    
+    /*display: flex;
+    justify-content: space-between;*/
+}
+
+
+.brandLogo img {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(119,119,119);    
+}
+
+.brandName {
+    position: absolute;
+    top: 65px;
+    left: 110px;
+    width: 180px;
+    margin-right: auto;
+}
+
+.brandName h2 {
+    margin: 0;
+    font-weight: bold;    
+}
+
+a.brandLogo {
+    position: absolute;
+    left: 0;
+    margin-right: auto;
+}
+
+.phones {
+    position: absolute;
+    right: 0;
+    top: 77px;
+    line-height: 30px;
+    /* letter-spacing: 1px; */
+    font-size: 44px;
+}
+
+.phones p {
+    font-family: "OpenSansCondLight", sans-serif;
+}
+
+.phones a {
+    color: rgb(119,119,119);
+}
+
+/* FOR FEEDBACK LINK "Обратная связь" */
+
+span.feedback {
+    right: 0;
+    position: absolute;
+    bottom: 45px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+span.feedback a {
+    color: rgb(119,119,119);
+    text-decoration: underline;
+    text-decoration-style: dashed;
+}
+
+/*******/
+
+nav {
+    position: absolute;
+    top: 230px;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(119,119,119);    
+}
+
+ul.menu {
+    height: 100%;
+    margin: 0;
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+ul.menu a {
+    color: #fff;
+}
+
+ul.menu li {
+    float: left;
+    padding-right: 10px;
+    padding-top: 27px;
+    font-size: 28px;
+}
+
+ul.menu li:after {
+    padding-left: 8px;
+    content: "|";
+    display: inline;
+    color: #fff;
+}
+
+ul.menu li:last-child:after {
+    display: none;
+}
+
+section.slider {
+    position: absolute;
+    top: 310px;
+    border: 1px solid;
+    background-color: rgb(248,248,248);    
+}
+
+section.info.sliderInfo {
+    text-align: center;
+    width: 1400px;
+}
+
+main.content {
+    position: absolute;
+    top: 710px;
+    border: 1px solid;
+    height: 785px;
+    width: 100%;
+}
+
+section.info.mainInfo {
+    position: relative;
+    padding-top: 30px;
+}
+
+aside {
+    position: absolute;
+    border: 1px solid;
+    width: 350px;
+    height: 560px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    border: 1px solid;
+    height: 220px;
+    width: 100%;
+}
+
+article.afterword {
+    height: 100%;
+    padding: 45px 0;
+    position: relative;
+}
+
+.lifespan {
+    position: absolute;
+    left: 0;
+    line-height: 14px;
+}
+
+.footMenu {
+    position: absolute;
+    left: 307px;
+    line-height: 25px;
+}
+
+.credits {
+    position: absolute;
+    right: 0;
+}
+
+.footMenu ul {
+    list-style-type: none;
+}
