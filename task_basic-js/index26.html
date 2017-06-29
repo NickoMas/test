@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic JS</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	
+
+
+	<script>
+		
+		let a = parseFloat(prompt("Введите число a!", ""));
+		let b = parseFloat(prompt("Введите число b!", ""));
+		let c = parseFloat(prompt("Введите число c!", ""));
+
+		//parseFloat is used instead of +prompt() so that to process case when "OK" button
+		//is hit without any data entered and thus "" converting to 0 with the help of unary '+'
+
+		const isNumber = function (num) {
+			return  typeof num === "number"
+					&& num >= 0 
+					&& isFinite(num)
+					&& !isNaN(num);
+		};
+
+		let fallback = isNumber(a) && isNumber(b) && isNumber(c) ? 
+			null : 
+			"Дедуля, введи число, неотрицательное и конечное!";
+
+		let result = ((a * a + b * b) === c * c) ?
+			"Ура: угадали длины сторон треугольника" : 
+			"Надо учить теорему";
+
+		alert(fallback || result);
+		
+	</script>
+</body>
+</html>
