@@ -1,0 +1,47 @@
+header h1, .content {
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 20px;
+    width: 50%;
+    margin-bottom: 0;
+}
+
+header {
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+}
+
+section.content {
+	min-width: 50%;
+}
+
+main {
+    text-align: center;
+}
+
+.answers ul {
+    list-style-type: lower-alpha;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.answers li {
+    /* display: inline-flex; */
+    flex: 1 1 35%;
+}
+
+.answers {
+    /* text-align: initial; */
+}
+
+.user {
+	padding: 10px;
+	border: 1px solid;
+	border-radius: 5px;
+/* display: inline; *//* position: absolute; */
+}
