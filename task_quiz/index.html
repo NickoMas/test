@@ -22,31 +22,39 @@
 		<section class="content">
 			<h3>Test: .NET</h3>
 			<article>
-				<div class="question">
+				<h2 class="question">
 					1. Lorem ipsum dolor sit amet, consectetur?
-				</div>
+				</h2>
 				<div class="answers">
-					<ul>
-						<li>
-							<a href="">lorem</a>
-						</li>
-						<li>
-							<a href="">ipsum</a>
-						</li>
-						<li>
-							<a href="">dolor</a>
-						</li>
-						<li>
-							<a href="">sit amet</a>
-						</li>
-					</ul>
+					<form action="" method="post" id="quiz">
+						<ol>
+							<li>
+								<input type="radio" name="1-question-answers" id="1-question-answers-A" value="A">
+								<label for="1-question-answers-A">Lorem</label>
+							</li>
+							<li>
+								<input type="radio" name="1-question-answers" id="1-question-answers-B" value="B">
+								<label for="1-question-answers-B">ipsum</label>								
+							</li>
+							<li>
+								<input type="radio" name="1-question-answers" id="1-question-answers-C" value="C">
+								<label for="1-question-answers-C">dolor</label>								
+							</li>
+							<li>
+								<input type="radio" name="1-question-answers" id="1-question-answers-D" value="D">
+								<label for="1-question-answers-D">sit amet?</label>								
+							</li>
+						</ol>
+						<input type="button" value="Next">
+						<input type="submit" value="Submit test results"> <!-- must be hidden until the end -->
+					</form>
 				</div>
 			</article>
 		</section>
 	</main>
-	<footer>
+<!-- 	<footer>
 		<h4>See ya!</h4>
-	</footer>
+	</footer> -->
 
 	<script href="js/index.js"></script>
 

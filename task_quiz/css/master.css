@@ -24,8 +24,10 @@ main {
     text-align: center;
 }
 
-.answers ul {
-    list-style-type: lower-alpha;
+.answers ol {
+    text-align: initial; 
+    list-style-type: upper-alpha;
+    list-style-position: inside;
     display: flex;
     flex-flow: row wrap;
 }
