@@ -20,31 +20,98 @@
 		main {
 		    display: grid;
 		    grid-template-columns: 50%;
-		    grid-template-rows: 500px;
-		    justify-content: center;
+/*		    grid-template-rows: 500px;
+*/		    justify-content: center;
 		}
 
 		section.cities {
 		    display: flex;
+		    flex-flow: row wrap;
 		    /*justify-content: center;*/
 		}
 
-		section.cities div {
+		.input, .output {
 		    flex: 1 1 150px;
-		}		
-			
+		    min-height: 200px;
+		    text-align: center;
+		    padding: 10px;
+		    font: 20px Comic Sans MS, sans-serif;
+		}
+
+		nav {
+			width: 100%;
+			font: 2em verdana, sans-serif;
+			display: inline-flex;
+			flex-flow: column nowrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.taskBody {
+		    flex: 1 1 100px !important;
+		    width: 100%;
+		    font: 16px tahoma, sans-serif;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+			padding: 50px;					    
+		}
+
+		.reverse, .forward {
+			cursor: pointer;
+		}
+
+		input[type="submit"] {
+		    font: 20px arial;
+		    margin: 20px;
+		    background-color: black;
+		    color: #2edaa2;
+		    border-radius: 10px;
+		    padding: 10px;
+		}
+
+		input[type="text"] {
+			font: 20px arial;
+		}
+
+		.output ul {
+			padding: 20px;
+		}
+
+/*		span.pagination:before {
+			content: "\21E6";
+			cursor: pointer;
+		}
+
+		span.pagination:after {
+			content: "\21E8";
+			cursor: pointer;
+
+		}*/
+
+		div.task {
+			align-self: stretch;
+		}
+
 	</style>
 </head>
 <body>
 	
 	<main>
 		<section class="cities">
-			<p>Task №11</p>
+			<nav>
+				<p class="pagination">
+					<span class="reverse">&lArr;</span>
+					<span class="taskName">Task</span>
+					<span class="forward">&rArr;</span>					
+				</p>
+<!-- 				<div class="taskBody"></div>		
+ -->			</nav>
 			<div class="input"></div>
 			<div class="output"></div>
 		</section>
 	</main>
 
+	<script src="tasks.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>
