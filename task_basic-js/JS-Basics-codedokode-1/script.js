@@ -17,6 +17,9 @@ const tasks = {
 		input: inputTask_11,
 		output: outputTask_11
 	}
+	// Task_12: {
+	// 	input:
+	// }
 };
 
 input.addEventListener("submit", (event) => {
@@ -27,4 +30,3 @@ input.addEventListener("submit", (event) => {
 window.addEventListener("load", () => {
 	shiftTasks(tasksList[0])
 });
-
