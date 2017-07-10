@@ -5,7 +5,7 @@
 
 /*********TASK№11*********/
 
-const tasksData_11 = [{
+const dataTask_11 = [{
 	city: "Нью-Йорк",
 	country: "США",
 	population: 21445000
@@ -47,36 +47,48 @@ const tasksData_11 = [{
 	population: 22885000
 }];
 
-const inputTask_11 =
-		`<form id="clause">
+const inputTask_11 = function () {
+	
+	return	`<form id="task_11">
 		  awsomeSortAndCutFunction(<input type="text" maxlength=2 size="3" placeholder={0,10}>)<br>
-		  <input type="submit" value="Gimme an answer!">
-		</form>`;
+		  <input class="Submit_11" type="submit" value="Gimme an answer!">
+		</form>`;	
+}
 
-const outputTask_11 = function (amount = 10, defaultOrder=true) {
+const outputTask_11 = function (value) {
 
-	if(	!amount	 					  ||
-		isNaN(amount)    			  ||
-		!isFinite(amount)			  ||
-		(amount !== parseInt(amount)) ||
-		(amount < 0 || amount > 10 ) ) {
+	value.preventDefault();
+
+	let presetData = +value.target[0].value//+value.target[0].value;
+
+	if(	!presetData								||
+		isNaN(presetData)						||
+		!isFinite(presetData)					||
+		(presetData !== parseInt(presetData))	||
+		(presetData < 0 || presetData > 10 ) ) {
 			return output.innerHTML = "Введите нормально и всё вам будет."
 		}
 
 	let arrayWithList = [];
 
-	let output_array = !defaultOrder ? tasksData_11.sort((a,b) => b.population - a.population) : tasksData_11;
+	let output_array = dataTask_11.sort((a,b) => b.population - a.population)
+									.slice(0, presetData)
+									.forEach((item) => {
+												arrayWithList.push(`<li>Город: ${item.city}, 
+																		страна: ${item.country}, 
+																		население: ${item.population}`);
+											})
 
-	output_array = output_array.slice(0, amount);
+	// output_array = output_array.slice(0, amount);
 
-	output_array.forEach((item) => {
-		arrayWithList.push(`<li>Город: ${item.city}, страна: ${item.country}, население: ${item.population}`);
-	});
+	// output_array.forEach((item) => {
+	// 	arrayWithList.push(`<li>Город: ${item.city}, страна: ${item.country}, население: ${item.population}`);
+	// });
 
 	arrayWithList.unshift(`<ul>`);
 	arrayWithList.push(`</ul>`);
 
-	output.innerHTML = arrayWithList.join('');
+	return arrayWithList.join('');
 };
 
 /*********TASK№12**************/
@@ -162,7 +174,7 @@ Hamburger.prototype.removeTopping = function (topping) {
 	let toppings = this.toppings;
 
 	if (toppings.includes(topping.name)) {
-		toppings.splice(toppings.indexOf(topping.name),1);
+		toppings.splice(toppings.indexOf(topping.name), 1);
 		this.price -= topping.price;
 		this.calority -= this.calority;
 	} else {
@@ -190,6 +202,55 @@ Hamburger.prototype.calculateCalories = function () {
 	return this.calority;
 }
 
+const inputTask_12 = function () {
+	
+	// // let form_12 = document.getElementById("task_12");
+	// // form_12.addeventlistener("click", (e) => console.log(e));
+
+	// console.log(form_12)
+
+	return `<form id="task_12">
+	  <div class="size_group">
+	  	<h4>Size does matter</h4>
+		<input type="radio" name="size" value="Small">Small burger
+		<input type="radio" name="size" value="Large">Large burger
+		<input type="text" value="">
+	  </div>
+	  <div class="stuffing_group">
+	  	<h4>Stuff it</h4>
+		<input type="radio" name="stuffing" value="Cheese">Cheese
+		<input type="radio" name="stuffing" value="Salad">Salad
+		<input type="radio" name="stuffing" value="Potato">Potato
+	  </div>
+	  <div class="topping_group">
+	  	<h4>Top it</h4>
+		<input type="radio" name="top" value="Mayo">Mayo
+		<input type="radio" name="top" value="Spice">Spice
+	  </div>
+	  <div class="control">
+	  	<h4>Order your delicious burger</h4>
+		<input type="submit" value="Gimme my burger!" title="Mmmmmm...yummy!">
+	  </div>
+	</form>`;
+
+}
+const outputTask_12 = function (value) {
+
+	value.preventDefault();
+	
+	let presetData = value.target.value;
+	console.log(presetData);
+	let hamburgerArgs = [];
+
+	// switch (presetData) {
+	// 	case "Small burger":
+	// 		hamburgerArgs.push(Hamburger.SIZE_SMALL);
+	// 		return "You chose small one";
+	// 	case "Large burger":
+	// 		hamburgerArgs.push(Hamburger.SIZE_LARGE);
+	// 		return "You chose large one";
+	// }
+}
 
 /*********TASK№13**************/
 
@@ -211,8 +272,6 @@ const defineVar = function (val) {
 			return "undefined";
 		case "boolean":
 			return "boolean";
-		case "null":
-			return "null";
 		case "number":
 			return "number";
 		case "string":
@@ -226,6 +285,45 @@ const defineVar = function (val) {
 				return "array-like"
 			}
 			return objectType.call(val).slice(8, -1).toLowerCase();
-		default: return objectType.call(val).slice(8, -1).toLowerCase();
+		default: 
+			return objectType.call(val).slice(8, -1).toLowerCase();
 	}
+}
+
+
+/*********TASK№15**************/
+
+ const shallowCopy = function (copied) {
+
+	let objectType = Object.prototype.toString;
+
+ 	switch (objectType.call(copied).slice(8,-1).toLowerCase()) {
+ 		case "array":
+ 			return Object.assign([], copied);
+ 		case "date":
+ 			return new Date(copied.getTime());
+ 		default:
+ 			return Object.assign({},copied);
+ 	}
+ }
+
+
+/*********TASK№16**************/
+
+const deepCopy = function (copied) {
+	let deeplyCloned = JSON.parse(JSON.stringify(copied));
+
+	for(let item in deeplyCloned) {
+		if(typeof deeplyCloned[item] === "string") {
+			
+			let stringToDate = new Date(deeplyCloned[item]);
+			let dateStringValue = stringToDate.valueOf();
+
+			if (!isNaN(dateStringValue)) {
+				deeplyCloned[item] = stringToDate;
+			}
+		}
+	}
+
+	return deeplyCloned;
 }
