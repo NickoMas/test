@@ -3,8 +3,360 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Codedokode-gist-jstask-1</title>
+	<style>
+	
+	body {
+	    font-size: 100%;
+	    font: 16px tahoma;
+	}
+
+	span.log {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #61d60e;
+	}
+
+	.task_12 li {
+		padding: 20px;
+	}
+
+	</style>
 </head>
 <body>
-	
+	<main>
+		<h2>
+			Everything below is provided as links on data to be copied and used in console
+		</h2>
+		<h4>
+			<a href="https://gist.github.com/
+							codedokode/ce30e7a036f18f416ae0#%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%BA%D0%B8-
+							%D0%BD%D0%B0-js" target="_blank">Task source</a>
+		</h4>
+		<section class="task_11">
+			<h4>Task№11</h4>
+			<p>
+				Unsorted array: <span class="log">array_11</span>; 
+			</p>
+			<p>
+				Function to sort: <span class="log">sortArray_11(num)</span>; - where num is number to limit list
+			</p>
+		</section>
+		<section class="task_12">
+			<h4>Task№12</h4>
+			<p>
+				Function-constructor: <span class="log">Hamburger(size, stuffing)</span>; -where size and stuffing are objects to pass (listed below) 
+			</p>
+			<p>
+				Objects to pass as parameters: 
+				<ul>
+					<li><span class="log">Hamburger.SIZE_SMALL<span></li>
+					<li><span class="log">Hamburger.SIZE_LARGE<span></li>
+					<li><span class="log">Hamburger.STUFFING_CHEESE<span></li>
+					<li><span class="log">Hamburger.STUFFING_SALAD<span></li>
+					<li><span class="log">Hamburger.STUFFING_POTATO<span></li>
+					<li><span class="log">Hamburger.TOPPING_MAYO<span></li>
+					<li><span class="log">Hamburger.TOPPING_SPICE<span></li>
+				</ul> <span class="log">sortArray_11(num)</span>; - where num is number to limit list
+			</p>
+			<p>
+				Add topping: <span class="log">{createdHamburger}.addTopping(par)</span>; - where par is object
+			</p>
+			<p>
+				Remove topping: <span class="log">{createdHamburger}.removeTopping(par)</span>;
+			</p>
+			<p>
+				Get toppings: <span class="log">{createdHamburger}.getToppings()</span>;
+			</p>
+			<p>
+				Get size: <span class="log">{createdHamburger}.getSize()</span>
+			</p>
+			<p>
+				Get stuffing: <span class="log">{createdHamburger}.getStuffing()</span>
+			</p>
+			<p>
+				Calculate price: <span class="log">{createdHamburger}.calculatePrice()</span>
+			</p>
+			<p>
+				Calculate price: <span class="log">{createdHamburger}.calculateCalories()</span>
+			</p>
+		</section>		
+		<section class="task_13">
+			<h4>Task№13</h4>
+		</section>
+		<section class="task_14">
+			<h4>Task№14</h4>
+			<p>
+				Function to define variable type: <span class="log">defineVar(val)</span>; - where val is variable passed
+			</p>
+		</section>
+		<section class="task_15">
+			<h4>Task№15</h4>
+			<p>
+				Function to shallow copy an object: <span class="log">shallowCopy(obj)</span>; - where obj is object passed
+			</p>
+		</section>
+		<section class="task_16">
+			<h4>Task№16</h4>
+			<p>
+				Function to deeply copy an object: <span class="log">deepCopy(obj)</span>; - where obj is object passed
+			</p>
+		</section>		
+	</main>
+
+<script>
+
+/*********TASK№11*********/
+
+const array_11 = [{
+	city: "Нью-Йорк",
+	country: "США",
+	population: 21445000
+}, {
+	city: "Джакарта",
+	country: "Индонезия",
+	population: 31760000
+},  {
+	city: "Сеул",
+	country: "Южная Корея",
+	population: 24105000
+}, {
+	city: "Дели",
+	country: "Индия",
+	population: 26495000
+}, {
+	city: "Карачи",
+	country: "Пакистан",
+	population: 23545000
+}, {
+	city: "Манила",
+	country: "Филиппины",
+	population: 24245000
+}, {
+	city: "Шанхай",
+	country: "Китай",
+	population: 23390000
+}, {
+	city: "Токио",
+	country: "Япония",
+	population: 37900000
+},  {
+	city: "Сан-Паулу",
+	country: "Бразилия",
+	population: 20850000
+}, {
+	city: "Мумбаи",
+	country: "Индия",
+	population: 22885000
+}];
+
+const sortArray_11 = function (data) {
+
+	if(	!data						||
+		isNaN(data)					||
+		!isFinite(data)				||
+		(data !== parseInt(data))	||
+		(data < 0 || data > 10 ) ) {
+			throw new Error("Enter valid range")
+		}
+
+	return array_11.sort((a,b) => b.population - a.population)
+						.slice(0, data);
+
+};
+
+/*********TASK№12**************/
+
+function Hamburger (size, stuffing) {
+	if(!size || !stuffing ) {
+		throw new HamburgerException(`no size or stuffing were given`);
+	} else if (size.type !== "size") {
+		throw new HamburgerException(`invalid size ${size.type}`);
+	} else if (stuffing.type !== "stuffing") {
+		throw new HamburgerException(`invalid stuffing ${stuffing.type}`);
+	}
+
+	this.size = size.name;
+	this.stuffing = stuffing.name;
+	this.toppings = [];
+	this.price = size.price;
+	this.calority = size.calority;
+}
+
+function HamburgerException (message) {
+	this.message = message;
+}
+
+Hamburger.SIZE_SMALL = {
+	name: "small",
+	type: "size",
+	price: 50,
+	calority: 20
+};
+
+Hamburger.SIZE_LARGE = {
+	name: "large",
+	type: "size",
+	price: 100,
+	calority: 40
+};
+
+Hamburger.STUFFING_CHEESE = {
+	name: "cheese",
+	type: "stuffing",
+	price: 10,
+	calority: 20
+};
+
+Hamburger.STUFFING_SALAD = {
+	name: "salad",
+	type: "stuffing",
+	price: 20,
+	calority: 5
+};
+
+Hamburger.STUFFING_POTATO = {
+	name: "potato",
+	type: "stuffing",
+	price: 15,
+	calority: 10
+};
+
+Hamburger.TOPPING_MAYO = {
+	name: "mayo",
+	type: "topping",
+	price: 20,
+	calority: 5
+};
+
+Hamburger.TOPPING_SPICE = {
+	name: "spice",
+	type: "topping",
+	price: 15,
+	calority: 0
+};
+
+Hamburger.prototype.addTopping = function (topping) {
+
+	if (!this.toppings.includes(topping.name) &&
+	 	topping.type === "topping" ) {
+		this.toppings.push(topping.name);
+		this.price += topping.price;
+		this.calority += this.calority;
+	} else {
+		throw new HamburgerException(`duplicate topping ${topping.name}`);
+	}
+};
+
+Hamburger.prototype.removeTopping = function (topping) {
+
+	let toppings = this.toppings;
+
+	if (toppings.includes(topping.name)) {
+		toppings.splice(toppings.indexOf(topping.name), 1);
+		this.price -= topping.price;
+		this.calority -= this.calority;
+	} else {
+		throw new HamburgerException(`no such topping: ${topping.name}`);
+	}
+};
+
+Hamburger.prototype.getToppings = function () {
+	return this.toppings;
+};
+
+Hamburger.prototype.getSize = function () {
+	return this.size;
+}
+
+Hamburger.prototype.getStuffing = function () {
+	return this.stuffing;
+}
+
+Hamburger.prototype.calculatePrice = function () {
+	return this.price;
+}
+
+Hamburger.prototype.calculateCalories = function () {
+	return this.calority;
+}
+
+/*********TASK№13**************/
+
+function ElectroStation() {
+
+}
+
+
+/*********TASK№14**************/
+
+const defineVar = function (val) {
+
+	if(val === null) return "null";
+
+	let objectType = Object.prototype.toString;
+
+	switch (typeof val) {
+		case "undefined":
+			return "undefined";
+		case "boolean":
+			return "boolean";
+		case "number":
+			return "number";
+		case "string":
+			return "string";
+		case "function":
+			return "function";
+		case "array":
+			return "array";
+		case "object":
+			if (val[0] && val.length) {
+				return "array-like"
+			}
+			return objectType.call(val).slice(8, -1).toLowerCase();
+		default: 
+			return objectType.call(val).slice(8, -1).toLowerCase();
+	}
+}
+
+
+/*********TASK№15**************/
+
+ const shallowCopy = function (copied) {
+
+	let objectType = Object.prototype.toString;
+
+ 	switch (objectType.call(copied).slice(8,-1).toLowerCase()) {
+ 		case "array":
+ 			return Object.assign([], copied);
+ 		case "date":
+ 			return new Date(copied.getTime());
+ 		default:
+ 			return Object.assign({},copied);
+ 	}
+ }
+
+
+/*********TASK№16**************/
+
+const deepCopy = function (copied) {
+	let deeplyCloned = JSON.parse(JSON.stringify(copied));
+
+	for(let item in deeplyCloned) {
+		if(typeof deeplyCloned[item] === "string") {
+			
+			let stringToDate = new Date(deeplyCloned[item]);
+			let dateStringValue = stringToDate.valueOf();
+
+			if (!isNaN(dateStringValue)) {
+				deeplyCloned[item] = stringToDate;
+			}
+		}
+	}
+
+	return deeplyCloned;
+}
+</script>
+
 </body>
 </html>

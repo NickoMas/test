@@ -102,7 +102,7 @@ function Hamburger (size, stuffing) {
 		throw new HamburgerException(`invalid stuffing`);
 	}
 
-	this.size = size.type;
+	this.size = size.name;
 	this.stuffing = stuffing.name;
 	this.toppings = [];
 	this.price = size.price;
@@ -114,44 +114,49 @@ function HamburgerException (message) {
 }
 
 Hamburger.SIZE_SMALL = {
-	name: "s_small",
+	name: "small",
 	type: "size",
 	price: 50,
 	calority: 20
 };
-;
+
 Hamburger.SIZE_LARGE = {
-	name: "s_large",
+	name: "large",
 	type: "size",
 	price: 100,
 	calority: 40
 };
+
 Hamburger.STUFFING_CHEESE = {
-	name: "stf_cheese",
+	name: "cheese",
 	type: "stuffing",
 	price: 10,
 	calority: 20
 };
+
 Hamburger.STUFFING_SALAD = {
-	name: "stf_salad",
+	name: "salad",
 	type: "stuffing",
 	price: 20,
 	calority: 5
 };
+
 Hamburger.STUFFING_POTATO = {
-	name: "stf_potato",
+	name: "potato",
 	type: "stuffing",
 	price: 15,
 	calority: 10
 };
+
 Hamburger.TOPPING_MAYO = {
-	name: "tp_mayo",
+	name: "mayo",
 	type: "topping",
 	price: 20,
 	calority: 5
 };
+
 Hamburger.TOPPING_SPICE = {
-	name: "tp_spice",
+	name: "spice",
 	type: "topping",
 	price: 15,
 	calority: 0
@@ -204,44 +209,66 @@ Hamburger.prototype.calculateCalories = function () {
 
 const inputTask_12 = function () {
 	
-	// // let form_12 = document.getElementById("task_12");
-	// // form_12.addeventlistener("click", (e) => console.log(e));
+	// let form_12 = document.getElementById("task_12");
+	// form_12.addeventlistener("click", (e) => console.log(e));
 
 	// console.log(form_12)
 
 	return `<form id="task_12">
-	  <div class="size_group">
-	  	<h4>Size does matter</h4>
-		<input type="radio" name="size" value="Small">Small burger
-		<input type="radio" name="size" value="Large">Large burger
-		<input type="text" value="">
+	  <div class="preset">
+	  	<h4>
+	  		Hey, buddy! I wanna<br> <input id="size" type="text" size=1 disabled>-sized burger stuffed with <input id="stuff" type="text" size=2 disabled>
+	  	</h4>
 	  </div>
+	  <div class="size_group">
+	  	<h4>Sizes</h4>
+	  	<input type="button" name="size" value="small" onclick="document.getElementById('size').value = this.value">
+	  	<input type="button" name="size" value="large" onclick="document.getElementById('size').value = this.value">
+	  </div>	  
 	  <div class="stuffing_group">
-	  	<h4>Stuff it</h4>
-		<input type="radio" name="stuffing" value="Cheese">Cheese
-		<input type="radio" name="stuffing" value="Salad">Salad
-		<input type="radio" name="stuffing" value="Potato">Potato
+	  	<h4>Stuffings</h4>
+		<input type="button" name="stuffing" value="cheese" onclick="document.getElementById('stuff').value = this.value">
+		<input type="button" name="stuffing" value="salad" onclick="document.getElementById('stuff').value = this.value">
+		<input type="button" name="stuffing" value="potato" onclick="document.getElementById('stuff').value = this.value">
 	  </div>
 	  <div class="topping_group">
-	  	<h4>Top it</h4>
-		<input type="radio" name="top" value="Mayo">Mayo
-		<input type="radio" name="top" value="Spice">Spice
+	  	<h4>Add toppings</h4>
+		<input type="button" name="topping" value="mayo" onclick="createdBurger.addTopping(Hamburger.TOPPING_MAYO)">
+		<input type="button" name="topping" value="spice" onclick="createdBurger.addTopping(Hamburger.TOPPING_SPICE)">
 	  </div>
+	  <div class="topping_group">
+	  	<h4>Remove toppings</h4>
+		<input type="button" name="topping" value="mayo" onclick="createdBurger.removeTopping(Hamburger.TOPPING_MAYO)">
+		<input type="button" name="topping" value="spice" onclick="createdBurger.removeTopping(Hamburger.TOPPING_SPICE)">
+	  </div>	  
 	  <div class="control">
-	  	<h4>Order your delicious burger</h4>
-		<input type="submit" value="Gimme my burger!" title="Mmmmmm...yummy!">
+	  	<h4>Options</h4>	  
+		<input type="button" name="control" value="Get toppings" onclick="">
+		<input type="button" name="control" value="Get size" onclick="">
+		<input type="button" name="control" value="Get stuffing" onclick="">
+		<input type="button" name="control" value="Calculate price" onclick="">
+		<input type="button" name="control" value="Calculate calories" onclick="">
 	  </div>
+	  	<h4>Order your delicious burger</h4>
+		<input id="submit" onclick="createdBurger = createHamburger(this)" type="submit" value="Gimme my burger!" title="Mmmmmm...yummy!">
 	</form>`;
 
 }
+
+let createdBurger;//variable to store our burger
+
 const outputTask_12 = function (value) {
 
 	value.preventDefault();
+	//console.log(value);
 	
 	let presetData = value.target.value;
-	console.log(presetData);
 	let hamburgerArgs = [];
 
+	return `Burger!<br>
+			size: ${createdBurger.size}<br>
+			stuffed with: ${createdBurger.stuffing}<br>
+			`
 	// switch (presetData) {
 	// 	case "Small burger":
 	// 		hamburgerArgs.push(Hamburger.SIZE_SMALL);
@@ -250,6 +277,29 @@ const outputTask_12 = function (value) {
 	// 		hamburgerArgs.push(Hamburger.SIZE_LARGE);
 	// 		return "You chose large one";
 	// }
+}
+
+const createHamburger = function (element) {
+	
+	const form = element.parentNode.children;
+
+	const size = form[0].querySelector("#size");
+	const stuff = form[0].querySelector("#stuff");
+
+	const sizeValue = size.value ? `SIZE_${size.value.toUpperCase()}` : null;
+	const stuffValue = stuff.value ? `STUFFING_${stuff.value.toUpperCase()}` : null;
+
+	// let storeObject = {
+	// 	createdBurger: function(){
+	// 		return new Hamburger(sizeValue, stuffValue);
+	// 	}
+	// };
+
+	let hamburger = new Hamburger(Hamburger[sizeValue], Hamburger[stuffValue]);
+
+	console.dir(hamburger)//element.parentNode.children)
+
+	return hamburger;
 }
 
 /*********TASK№13**************/

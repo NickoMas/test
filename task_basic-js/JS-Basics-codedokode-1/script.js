@@ -78,7 +78,6 @@ const tasks = [
 
 input.addEventListener("submit", (event) => {
 	//event.preventDefault();
-	console.log(event);
 	outputSomething(event);
 	//tasks[document.querySelector(".taskName a").innerHTML].output(+event.target[0].value, false);
 })
