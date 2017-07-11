@@ -106,6 +106,8 @@
 
 <script>
 
+"use strict"
+
 /*********TASK№11*********/
 
 const array_11 = [{
@@ -307,13 +309,14 @@ const defineVar = function (val) {
 			return "string";
 		case "function":
 			return "function";
-		case "array":
-			return "array";
 		case "object":
-			if (val[0] && val.length) {
+			if (objectType.call(val).slice(8, -1).toLowerCase() === "array") {
+				return "array"
+			} else if (val[0]) {
 				return "array-like"
+			} else {
+				return "object"
 			}
-			return objectType.call(val).slice(8, -1).toLowerCase();
 		default: 
 			return objectType.call(val).slice(8, -1).toLowerCase();
 	}

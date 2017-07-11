@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic JS</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	
+
+
+	<script>
+
+		"use strict"
+
+		let a = parseFloat(prompt("Введите число a!", ""));
+		let b = parseFloat(prompt("Введите число b!", ""));
+
+		let start = confirm(`Вы хотите возвести число ${a} в степень ${b}?`);
+		
+		const isNumber = function (num) {
+			return  typeof num === "number"
+						&& num >= 0 
+						&& parseInt(num) === num
+						&& isFinite(num)
+						&& !isNaN(num);
+		};
+
+		let fallback = isNumber(a) && isNumber(b) ? 
+			null : 
+			"Дедуля, введи число, недробное, неотрицательное и конечное!";
+
+
+		let result = Math.sqrt(a * b) < 4 ? "Мало" : "Много";
+
+		if(start){
+			result = a**b
+		} else {
+			a = parseFloat(prompt("Введите число a!", ""));
+			b = parseFloat(prompt("Введите число b!", ""));
+
+			start = confirm(`Вы хотите возвести число ${a} в степень ${b}?`);			
+		}
+
+		alert(result);
+
+	</script>
+</body>
+</html>
