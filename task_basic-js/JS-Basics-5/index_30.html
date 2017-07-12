@@ -15,41 +15,62 @@
 
 		"use strict"
 
-		let a = +prompt("Введите число a!", ""));
-		let b = parseFloat(prompt("Введите число b!", ""));
-		let z = +a;
+		let a = +prompt("Введите число a!", "");
+		let b = +prompt("Введите число b!", "");
+		let z = a;
 
-		let start = confirm(`Вы хотите возвести число ${a} в степень ${b}?`);
+		let start = confirm(`Вы хотите возвести число ${+a} в степень ${+b}?`);
 
-		const isNumber = function (num) {
+		const isNumber = function (num, fraction = false) {
 			return  typeof num === "number"
-						&& num >= 0
-						&& parseInt(num) === num
 						&& isFinite(num)
-						&& !isNaN(num);
+						&& !isNaN(num)
+						&& (fraction ? parseInt(parseFloat(num)) === num : num)
 		};
 
-		let fallback = isNumber(a) && isNumber(b) ?
+		let fallback = isNumber(a) && isNumber(b, true) ?
 			null :
-			"Дедуля, введи число, недробное, неотрицательное и конечное!";
+			"Введите конечное число для основания и степени + степень должна быть целым числом!";
 
+		const countPwr = function (grade) {
 
-		let result = Math.sqrt(a * b) < 4 ? "Мало" : "Много";
-
-		if(start){
 			let i = 2;
-			while (i <= y) {
-				z *= x;
+			while (i <= grade) {
+				z *= a;
 				i++;
 			}
-		} else {
-			a = parseFloat(prompt("Введите число a!", ""));
-			b = parseFloat(prompt("Введите число b!", ""));
-
-			start = confirm(`Вы хотите возвести число ${a} в степень ${b}?`);
+			return z;
 		}
 
-		alert(`Число ${a} в степени ${b} равно ${z}`);
+		if (b < 0) {
+			z = 1 / countPwr(Math.abs(b));
+		} else if (b === 1) {
+			z = a;
+		} else if (b === 0) {
+			z = 1;
+		} else {
+			countPwr(b)
+		}
+
+		let result;
+
+		//recursively obtaining "YES" answer from user
+		const untilYes = function () {
+			if(start){
+				result = `Число ${a} в степени ${b} равно ${z}`;
+			} else {
+				a = parseFloat(prompt("Введите число a!", ""));
+				b = parseFloat(prompt("Введите число b!", ""));
+
+				start = confirm(`Вы хотите возвести число ${a} в степень ${b}?`);
+				untilYes();
+			}			
+		}
+
+		untilYes();
+
+
+		alert(fallback || result);
 
 	</script>
 </body>
