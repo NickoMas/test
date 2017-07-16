@@ -1,0 +1,11 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    font: 16px tahoma, sans-serif;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
