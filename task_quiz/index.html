@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="root">
 <head>
 	<meta charset="UTF-8">
 	<title>Quiz</title>
@@ -9,30 +9,34 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="css/master.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+ -->
 	<!--[if lt IE 9]>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
 	<![endif]-->	
 </head>
-<body class="container">
+<body class="container" ng-controller="main">
 	<header>
 		<h1>Quiz for young techies</h1>
 		<span class="user">Nick Masalkov</span>
-<!-- 		<div class="user">Nick Masalkov</div>
- -->	</header>
+		<input type="button" value="Request" ng-click="request()">
+	</header>
 	<main>
 	
 		<div class="statusBar">
-			<span>Your results</span>
+			<span class="textStatus">Your summary</span>
 			<span class="navArrow">&#x21E8;</span>
 		</div>
 		<section class="content">
 			<article class="result">
 				<figure class="mark">
 					<div id="markCircle">30%</div>
-				</figure>
+				</figure ng-model="overall">
 				<h3>
 					<span>Cool!</span>
-					<span>4/10 answers</span>
+					<span>/{overall} answers</span>
 				</h3>
 				<ul class="answers">
 					<li class="correct" data-result="&#x2714;">1</li>
@@ -60,7 +64,7 @@
 		</article>
 
 	</main>
-
+	<script src="js/root.js"></script>
 	<script src="js/index.js"></script>
 
 </body>
