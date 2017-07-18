@@ -49,6 +49,11 @@ header h1 {
     color: rgba(37, 162, 218, 1);
 }
 
+.textStatus {
+    opacity: 1;
+    transition: all 1s;
+}
+
 figure.mark {
 /*    background: green;
     width: 100px;
