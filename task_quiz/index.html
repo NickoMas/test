@@ -21,7 +21,7 @@
 	<header>
 		<h1>Quiz for young techies</h1>
 		<span class="user">Nick Masalkov</span>
-		<input type="button" value="Request" ng-click="request()">
+		<input type="button" value="Request data (test button)" ng-click="request()">
 	</header>
 	<main>
 	
@@ -32,24 +32,24 @@
 		<section class="content">
 			<article class="result">
 				<figure class="mark">
-					<div id="markCircle">30%</div>
-				</figure ng-model="overall">
+					<div id="markCircle" ng-style="markColor()">{{correctPercent}}%</div>
+				</figure>
 				<h3>
 					<span>Cool!</span>
-					<span>/{overall} answers</span>
+					<span>{{correct}}/{{overall}} answers</span>
 				</h3>
 				<ul class="answers">
-					<li class="correct" data-result="&#x2714;">1</li>
-					<li class="correct" data-result="&#x2714;">2</li>
-					<li class="wrong" data-result="&#x2718;">3</li>
-					<li class="wrong" data-result="&#x2718;">4</li>
-					<li class="wrong" data-result="&#x2718;">5</li>
+					<li ng-repeat="item in questions" ng-class="item.correct ? 'correct' : 'wrong'" ng-attr-data-result="{{item.correct ? '&#x2714;' : '&#x2718;'}}">{{$index+1}}</li>
+<!-- 					<li ng-repeat="item in questions" class="correct" data-result="&#x2714;">{{item.correct}}</li>
+					<li ng-repeat="item in questions" class="wrong" data-result="&#x2718;">{{item.correct}}</li>
+					<li ng-repeat="item in questions" class="wrong" data-result="&#x2718;">{{item.correct}}</li>
+					<li ng-repeat="item in questions" class="wrong" data-result="&#x2718;">{{item.correct}}</li> -->
 				</ul>
 			</article>
 		</section>
 		<article class="toRead">
-			<h4>Cool stuff to explore on topic</h4>
-			<ul class="list">
+<!-- 			<h4>Cool stuff to explore on topic</h4>
+ -->			<ul class="list">
 				<li>Lorem ipsum dolor sit amet.</li>
 				<li>Lorem ipsum dolor sit amet.</li>
 				<li>Lorem ipsum dolor sit amet.</li>
