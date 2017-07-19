@@ -3,8 +3,12 @@ let toReadBlock = document.querySelector(".toRead");
 let textStatus = document.querySelector(".textStatus");
 let arrow = document.querySelector(".navArrow");
 
+const modifyStyle = function (el, prop) {
+	return +getComputedStyle(el)[prop];
+}
+
 const shiftBlocks = function() {
-	if (! +toReadBlock.style.opacity) {
+	if ( +modifyStyle(contentBlock, "opacity")) {
 		contentBlock.style.opacity = 0;
 		contentBlock.style.zIndex = -1;
 		textStatus.style.opacity = 0;
@@ -21,7 +25,7 @@ const shiftBlocks = function() {
 		
 		toReadBlock.style.zIndex = 1;
 
-	} else {
+	} else if (+modifyStyle(toReadBlock, "opacity")) {
 		toReadBlock.style.opacity = 0;
 		toReadBlock.style.zIndex = -1;
 		textStatus.style.opacity = 0;

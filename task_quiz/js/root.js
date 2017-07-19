@@ -7,12 +7,19 @@ angular.module("root", [])
 
 		$scope.questions = null;
 
+		$scope.markNotes = ["Awful", "Bad", "Not that well", "OK", "Good", "Cool"];
+
 		// color depends on percent of correct answers
 		$scope.markColor = () => (
 			{
 				'background-color': `hsl(${($scope.correctPercent / 100) *120},100%,50%)`
 			}
 		);
+
+		// define note on given result
+		$scope.defineNote = () => {
+			return $scope.markNotes[Math.round(($scope.markNotes.length * $scope.correctPercent) / 100)];
+		}
 
 
 		$scope.request = function () {
