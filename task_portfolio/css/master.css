@@ -1,0 +1,170 @@
+
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	border: 1px solid;
+}
+
+body {
+	font-size: 100%;
+}
+
+.panel {
+	height: 100vh;
+	display: grid;	
+	grid-template-rows: 1fr 3fr;
+	grid-template-columns: 1fr;
+	grid-template-areas: 
+			"head"
+			"main";
+}
+
+/*********** HERO > **********/
+
+.heroNav {
+	justify-content: space-between;
+	display: flex;
+	flex-flow: row nowrap;
+	/*padding: 0 5%;*/
+	align-items: center;
+}
+
+.heroUList {
+    justify-content: space-around;
+    width: 80%;
+    display: inline-flex;
+    align-items: center;
+    list-style-type: none;
+}
+
+.heroUList li {
+	padding: 0 30px;
+}
+
+ul.heroUList li:last-of-type {
+    /* margin-left: auto; */
+}
+
+.heroHead {
+	grid-area: head;
+	align-self: center;
+}
+
+.label-toggle, #menu-toggle {
+	display: none;
+}
+
+@media screen and (max-width: 650px) {
+	.label-toggle {
+	    background: linear-gradient(to bottom, #E84545 0%, #E84545 20%, transparent 20%, transparent 40%, #E84545 40%, #E84545 60%, transparent 60%, transparent 80%, #E84545 80%, #E84545 100%);
+	    cursor: pointer;
+	    display: block;
+	    float: right;
+	    height: 35px;
+	    margin-top: 1em;
+	    width: 35px;
+	    align-self: flex-start;		
+	}
+
+	.heroNav {
+		flex-flow: row wrap;
+		justify-content: space-between;
+	}
+
+	.brand, .label-toggle {
+		align-self: flex-start;
+	}
+
+	.heroUList {
+		order: 1;
+	    display: block;
+	    height: 0;
+	    list-style-type: none;
+	    opacity: 0;
+	    text-align: center;
+/*	    transition: all 1s ease;
+*/	    width: 100%;
+	    visibility: hidden;
+	}
+
+	.heroUList li {
+	    border-bottom: 2px solid #53354A;
+	    color: #53354A;
+	    display: block;
+	    font-size: 1.5em;
+	    padding: 2em 0;		
+	}
+
+	#menu-toggle:checked ~ .heroUList {
+		opacity: 1;
+		height: 100vh;
+		/*width: 100vw;*/
+		visibility: visible;
+	}
+
+}
+
+/*********** < HERO ************/
+
+/*********** WORKS > ************/
+
+.worksHead, .aboutHead {
+	grid-area: head;
+    align-self: center;
+    justify-self: center;
+}
+
+.worksMain {
+	grid-area: main;
+}
+
+.worksUnit {
+    margin: 10px;
+    max-width: 200px;
+    height: 200px;
+    flex: 1 1 50%;
+}
+
+.worksContainer {
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 100px;
+    margin: 100px auto 0;
+}
+
+/*********** < WORKS ************/
+
+/************ ABOUT > **********/
+
+.aboutHead {
+	grid-area: head;
+}
+
+.aboutMain {
+	justify-self: center;
+	grid-area: main;
+}
+
+section.aboutContainer {
+    display: flex;
+}
+
+article.aboutText h3, .aboutText
+ p {
+    padding: 20px;
+}
+
+/*********** < ABOUT ***********/
+
+footer {
+	grid-area: foot;
+}
+
+
+
+
+
