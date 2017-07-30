@@ -9,22 +9,32 @@
 
 body {
 	font-size: 100%;
+	font-family: sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .panel {
-	height: 100vh;
-	display: grid;	
+	min-height: 100vh;
+	display: grid;
 	grid-template-rows: 1fr 3fr;
 	grid-template-columns: 1fr;
-	grid-template-areas: 
+	grid-template-areas:
 			"head"
 			"main";
 }
 
 /*********** HERO > **********/
 
+.hero {
+	background: url(http://wallpapercave.com/wp/wp1824983.jpg);
+    background-size: cover;
+}
+
 .heroNav {
-	justify-content: space-between;
+	justify-content: space-around;
 	display: flex;
 	flex-flow: row nowrap;
 	/*padding: 0 5%;*/
@@ -37,14 +47,31 @@ body {
     display: inline-flex;
     align-items: center;
     list-style-type: none;
+	font-size: 1.4em;
 }
 
 .heroUList li {
-	padding: 0 30px;
+	cursor: pointer;
+    border: 0;
+    color: #d8ded0;
+    padding: 20px 30px;
 }
 
 ul.heroUList li:last-of-type {
     /* margin-left: auto; */
+}
+
+ul.heroUList > li:last-child > button {
+    font-size: 1em;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(9, 157, 243, 0.8)), color-stop(0.5, rgba(92, 255, 212, 0.54)), to(rgba(255, 255, 255, 0.44)));
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #7c8240;
 }
 
 .heroHead {
@@ -65,12 +92,13 @@ ul.heroUList li:last-of-type {
 	    height: 35px;
 	    margin-top: 1em;
 	    width: 35px;
-	    align-self: flex-start;		
+	    align-self: flex-start;
 	}
 
 	.heroNav {
 		flex-flow: row wrap;
 		justify-content: space-between;
+		padding: 0 10px;
 	}
 
 	.brand, .label-toggle {
@@ -94,7 +122,7 @@ ul.heroUList li:last-of-type {
 	    color: #53354A;
 	    display: block;
 	    font-size: 1.5em;
-	    padding: 2em 0;		
+	    padding: 2em 0;
 	}
 
 	#menu-toggle:checked ~ .heroUList {
@@ -102,6 +130,8 @@ ul.heroUList li:last-of-type {
 		height: 100vh;
 		/*width: 100vw;*/
 		visibility: visible;
+		position: absolute;
+	    top: 140px;
 	}
 
 }
@@ -110,30 +140,49 @@ ul.heroUList li:last-of-type {
 
 /*********** WORKS > ************/
 
-.worksHead, .aboutHead {
+.worksHead {
 	grid-area: head;
-    align-self: center;
-    justify-self: center;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .worksMain {
 	grid-area: main;
+	/* align-self: center; */
 }
 
 .worksUnit {
-    margin: 10px;
-    max-width: 200px;
-    height: 200px;
-    flex: 1 1 50%;
+	grid-area: work;
 }
 
 .worksContainer {
-    width: 90%;
-    display: flex;
-    flex-flow: row wrap;
+    /* width: 90%; */
+    display: grid;
+    grid-template-areas:
+		"work work work"
+		"work work work";
+    grid: 200px 200px / 200px 200px 200px;
     justify-content: center;
-    margin-top: 100px;
-    margin: 100px auto 0;
+    grid-gap: 10px 20px;
+}
+
+@media screen and (max-width: 650px) {
+	/*.works {
+	    grid-template: 200px 3fr / 1fr;
+	}*/
+
+	.worksContainer {
+		grid-template-areas:
+			"work"
+			"work"
+			"work"
+			"work"
+			"work"
+			"work";
+		grid-template: repeat(6, 200px) / 200px;
+	}
 }
 
 /*********** < WORKS ************/
@@ -142,6 +191,8 @@ ul.heroUList li:last-of-type {
 
 .aboutHead {
 	grid-area: head;
+	align-self: center;
+	justify-self: center;
 }
 
 .aboutMain {
@@ -163,8 +214,3 @@ article.aboutText h3, .aboutText
 footer {
 	grid-area: foot;
 }
-
-
-
-
-
