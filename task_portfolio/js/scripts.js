@@ -1,75 +1,39 @@
 let currentOffset = 0;
 let panel = document.querySelector(".panel");
 let step = parseInt(getComputedStyle(panel).minHeight);
+let navBalls = document.querySelectorAll(".navList li");
 let genHeight = parseInt(getComputedStyle(document.querySelector(".wrapper")).height);
 
-// const scrollToPlace = (dir) => {
-//     const go = setInterval(() => {
-// 	    document.body.scrollTop += 5;
-//     }, 10)
-// }
+//data for mapping with navBalls - valid with only 3 sections!
+//purpose: shift active navBall depending on currentOffset value
+let stepValues = [
+    [currentOffset, navBalls[0]],
+    [currentOffset - step * 1, navBalls[1]],
+    [currentOffset - step * 2, navBalls[2]]
+]
 
-const func = function (dir) {
-    document.body.style.overflow = "hidden";
+let step_navs_map = new Map(stepValues);
 
-    if (dir === "down") {
-        const fo = setInterval(() => {
-            document.body.scrollTop += 1;
-            if (document.body.scrollTop >= (currentOffset + step)) {
-                clearInterval(fo);console.log("fire!");
-                currentOffset = document.body.scrollTop;
-                // document.body.style.overflow = "visible";
+//navBalls styling function
+const mapNavball = function () {
+    let keyOffset = step_navs_map.get(currentOffset);
+
+    if (keyOffset){
+        step_navs_map.forEach((key) => {
+            if (key.classList.contains("activeNavBall")) {
+                key.classList.toggle("activeNavBall")
             }
-        }, 5)
-    } else if (document.body.scrollTop) {
-        const fo = setInterval(() => {
-            document.body.scrollTop -= 1;
-            if (document.body.scrollTop <= (currentOffset - step)) {
-                clearInterval(fo);
-                currentOffset = document.body.scrollTop;
-                // document.body.style.overflow = "visible";
-            }
-        }, 5)
+        })
+        keyOffset.classList.toggle("activeNavBall")
     }
 }
 
-//// setIntervals through promises >
-
-//
-// const com = function () {
-//
-//     document.body.style.overflow = "hidden";
-//
-//     let promise = new Promise(function(resolve, reject) {
-//
-//         const go = setInterval(() => {
-//
-//
-//             if(document.body.scrollTop === (currentOffset + step)) {
-//                 alert('ookpok')
-//                 clearInterval(go);
-//                 setTimeout(()=>{
-//                     document.body.style.overflow = "visible";
-//                 },1000)
-//                 currentOffset = document.body.scrollTop;
-//                 resolve();
-//             }
-//         }, 10)
-//
-//     });
-//
-//     return promise
-// }
-
 //moving all main blocks simultaneously along Y-axis
-
-
-//currentOffset = 0
-
-const move = function (dir, leap) {
+//leap is needed for adjsutment of YAxis traverse depth
+const move = function (dir, leap = 1) {
         if (dir === "down") {
-            if (-currentOffset + (leap || step) < genHeight){
-                currentOffset -= (leap || step);
+            if (-currentOffset + step * leap < genHeight) {
+                currentOffset -= step * leap;
             }
         } else if (-currentOffset - step >= 0) {
             currentOffset += step;
@@ -77,30 +41,71 @@ const move = function (dir, leap) {
         document.querySelectorAll(".panel").forEach((a) => {
             a.style.transform = `translateY(${currentOffset}px)`
         });
+
+        mapNavball(); // navBalls styling function watches for changes during navigation
+        
         //let anchor = window.location.href.match(/[$#](\w+)/)[0];
         //location.assign(window.location.href.slice(0, -anchor.length))
 }
 
-window.addEventListener("mousewheel", (e) => {
-    e.preventDefault();
+//setTimout setting function for DRY purpose
+const directMove = function (dir) {
+    return setTimeout(() => {
+        move(dir);
+        document.body.style.overflow = "visible"
+    }, 500)
+}
 
-    if(e.deltaY >= 0) {
-        setTimeout(() => {
-            move("down")
-        }, 200)
-    } else {
-        setTimeout(() => {
-            move("up")
-        }, 200)
+//navigation through navBalls handler
+document.querySelector(".navList").addEventListener("click", (e) => {
+    if (e.target.nodeName === "LI") {
+
+        step_navs_map.forEach((key, value) => {
+            if(key === e.target) {
+                     
+                document.querySelectorAll(".panel").forEach((a) => {
+                    a.style.transform = `translateY(${value}px)`
+                });
+
+                currentOffset = value;
+            }
+        })
+        mapNavball();   
     }
 })
 
-// window.addEventListener("scroll", (e) => {
-//     if(window.pageYOffset > currentOffset) {
-//         move("down")
-//         console.log("down")
-//     } else if (window.pageYOffset < currentOffset) {
-//         move("up")
-//         console.log("up")
-//     }
-// })
+//arrows Up and Down handler
+window.addEventListener("keydown", (e) => {
+    e.preventDefault();
+
+    if (document.body.style.overflow === "visible") {
+
+        document.body.style.overflow = "hidden";
+
+        if (e.keyCode === 40) {
+            directMove("down")
+        } else if (e.keyCode === 38) {
+            directMove("up")
+        }
+    }
+
+})
+
+//mouse wheel handler
+window.addEventListener("mousewheel", (e) => {
+    e.preventDefault();
+
+    //enable scroll handling after on single roll - then cooldown
+    if (document.body.style.overflow === "visible") {
+    
+    document.body.style.overflow = "hidden";
+    
+        if(e.deltaY >= 0) {
+            directMove("down")
+        } else {
+            directMove("up")
+        }
+    }
+
+})
+

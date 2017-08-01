@@ -5,9 +5,9 @@
 	<title>WebDev portfolio</title>
 	<link rel="stylesheet" href="css/master.css">
 </head>
-<body>
-	<a id="works" style="display:none"></a>
-	<a id="about" style="display:none"></a>
+<body style="overflow:visible;">
+<!-- 	<a id="works" style="display:none"></a>
+	<a id="about" style="display:none"></a> -->
 	<section class="wrapper">
 		<div class="hero panel">
 			<header class="heroHead">
@@ -18,10 +18,10 @@
 					<input type="checkbox" id="menu-toggle">
 					<ul class="heroUList">
 						<li>
-							<a href="#works">My works</a>
+							<a onclick="move('down', 1)">My works</a>
 						</li>
 						<li>
-							<a href="#about">About me</a>
+							<a onclick="move('down', 2)">About me</a>
 						</li>
 						<li>
 							<a href="#contacts">Contacts</a>
@@ -73,6 +73,15 @@
 				</section>
 			</main>
 		</div>
+	
+		<div class="nav">
+			<ul class="navList">
+				<li class="activeNavBall 1-link"></li>
+				<li class="2-link"></li>
+				<li class="3-link"></li>
+			</ul>
+		</div>
+
 	</section>
 
 <script src="js/scripts.js"></script>

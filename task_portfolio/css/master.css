@@ -229,3 +229,64 @@ article.aboutText h3, .aboutText
 footer {
 	grid-area: foot;
 }
+
+
+
+
+.nav {
+    border: 0;
+    /* width: 100px; */
+    top: 50%;
+    left: 30px;
+    position: absolute;
+}
+
+ul.navList li {
+    background: radial-gradient(#ffffff 42%, #455fe9 60%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 10px 0;
+    line-height: 13px;
+    cursor: pointer;
+}
+
+ul.navList {
+    list-style-type: none;
+    border: 0;
+}
+
+ul.navList li:after {
+    background: #fff;
+    content: "";
+    margin-left: 20px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+ul.navList li:nth-child(1):after {
+	content: "Main"
+}
+
+/*ul.navList li:nth-child(1):active {
+	content: "Main"
+}*/
+
+ul.navList li:nth-child(2):after {
+	content: "Works"
+}
+
+ul.navList li:nth-child(3):after {
+	content: "Info"
+}
+
+ul.navList li:hover:after {
+    opacity: 1;
+}
+
+.activeNavBall {
+    box-shadow: 0px 0px 18px 4px #28da78;
+    /* width: 20px !important; */
+    /* height: 20px !important; */
+    background: radial-gradient(#2fb6e9 42%, #455fe9 60%) !important;
+}
