@@ -85,37 +85,37 @@ document.querySelector(".navList").addEventListener("click", (e) => {
     }
 })
 
-//arrows Up and Down handler
-window.addEventListener("keydown", (e) => {
-    e.preventDefault();
+// //arrows Up and Down handler
+// window.addEventListener("keydown", (e) => {
+//     e.preventDefault();
 
-    if (document.body.style.overflow === "visible") {
+//     if (document.body.style.overflow === "visible") {
 
-        document.body.style.overflow = "hidden";
+//         document.body.style.overflow = "hidden";
 
-        if (e.keyCode === 40) {
-            directMove("down")
-        } else if (e.keyCode === 38) {
-            directMove("up")
-        }
-    }
+//         if (e.keyCode === 40) {
+//             directMove("down")
+//         } else if (e.keyCode === 38) {
+//             directMove("up")
+//         }
+//     }
 
-})
+// })
 
-//mouse wheel handler
-window.addEventListener("mousewheel", (e) => {
-    e.preventDefault();
+// //mouse wheel handler
+// window.addEventListener("mousewheel", (e) => {
+//     e.preventDefault();
 
-    //enable scroll handling after on single roll - then cooldown
-    if (document.body.style.overflow === "visible") {
+//     //enable scroll handling after on single roll - then cooldown
+//     if (document.body.style.overflow === "visible") {
 
-    document.body.style.overflow = "hidden";
+//     document.body.style.overflow = "hidden";
 
-        if(e.deltaY >= 0) {
-            directMove("down")
-        } else {
-            directMove("up")
-        }
-    }
+//         if(e.deltaY >= 0) {
+//             directMove("down")
+//         } else {
+//             directMove("up")
+//         }
+//     }
 
-})
+// })
