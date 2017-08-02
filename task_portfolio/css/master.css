@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 * {
 	padding: 0;
@@ -9,7 +9,7 @@
 
 body {
 	font-size: 100%;
-	font-family: sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -23,10 +23,9 @@ body::-webkit-scrollbar {
 .panel {
 	transform: translateZ(0);
 	transition: transform 0.6s ease-in-out;
-
 	min-height: 100vh;
 	display: grid;
-	grid-template-rows: 1fr 3fr;
+	grid-template-rows: 1fr 4fr;
 	grid-template-columns: 1fr;
 	grid-template-areas:
 			"head"
@@ -44,8 +43,8 @@ a[id="about"]:target ~ .wrapper div.panel {
 /*********** HERO > **********/
 
 .hero {
-	/*background: url(http://wallpapercave.com/wp/wp1824983.jpg);
-    background-size: cover;*/
+	background: url(http://wallpapercave.com/wp/wp1824983.jpg);
+    background-size: cover;
 }
 
 .heroNav {
@@ -66,14 +65,19 @@ a[id="about"]:target ~ .wrapper div.panel {
 }
 
 .heroUList li {
+	background-color: #fff;
 	cursor: pointer;
-    border: 0;
-    color: #d8ded0;
-    padding: 20px 30px;
+	border: 0;
+	color: #d8ded0;
+	padding: 10px 10px;
+	color: #000;
+	border-radius: 10px;
 }
 
-ul.heroUList li:last-of-type {
-    /* margin-left: auto; */
+ul.heroUList li:last-child button {
+	font: 1em "Josefin Sans", sans-serif, bold;
+	border: 0;
+	background-color: #fff;
 }
 
 ul.heroUList > li:last-child > button {
@@ -156,6 +160,7 @@ ul.heroUList > li:last-child > button {
 /*********** WORKS > ************/
 
 .worksHead {
+	font-size: 2em;
 	grid-area: head;
 	display: flex;
 	flex-flow: column nowrap;
@@ -176,9 +181,8 @@ ul.heroUList > li:last-child > button {
     /* width: 90%; */
     display: grid;
     grid-template-areas:
-		"work work work"
-		"work work work";
-    grid: 200px 200px / 200px 200px 200px;
+		"work work work work";
+    grid: 250px / 250px 250px 250px 250px;
     justify-content: center;
     grid-gap: 10px 20px;
 }
@@ -289,4 +293,56 @@ ul.navList li:hover:after {
     /* width: 20px !important; */
     /* height: 20px !important; */
     background: radial-gradient(#2fb6e9 42%, #455fe9 60%) !important;
+}
+
+div#about {
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background: url("../img/sea2.jpg");*/
+}
+
+.panel header {
+    font-size: 2em;
+}
+
+div#works {
+    /*background: url("../img/sea1.jpg");*/
+    background-size: cover;
+}
+
+article.worksUnit:nth-child(1) {
+    /*background: no-repeat url("../img/Reen.png");*/
+    background-size: contain;
+}
+
+article.worksUnit:nth-child(2) {
+    /*background: no-repeat url("../img/Game.png");*/
+    background-size: contain;
+}
+
+article.worksUnit:nth-child(3) {
+    /*background: no-repeat url("../img/yt.png");*/
+    background-size: contain;
+}
+
+article.worksUnit:nth-child(4) {
+    /*background: no-repeat url("../img/rc.png");*/
+    background-size: contain;
+}
+
+article.worksUnit img {
+    width: 100%;
+    height: 135px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+article.worksUnit h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+article.worksUnit span {
+    padding: 5px;
+    border-radius: 5px;
 }

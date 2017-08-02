@@ -43,7 +43,7 @@ const move = function (dir, leap = 1) {
         });
 
         mapNavball(); // navBalls styling function watches for changes during navigation
-        
+
         //let anchor = window.location.href.match(/[$#](\w+)/)[0];
         //location.assign(window.location.href.slice(0, -anchor.length))
 }
@@ -62,7 +62,7 @@ document.querySelector(".navList").addEventListener("click", (e) => {
 
         step_navs_map.forEach((key, value) => {
             if(key === e.target) {
-                     
+
                 document.querySelectorAll(".panel").forEach((a) => {
                     a.style.transform = `translateY(${value}px)`
                 });
@@ -70,42 +70,41 @@ document.querySelector(".navList").addEventListener("click", (e) => {
                 currentOffset = value;
             }
         })
-        mapNavball();   
+        mapNavball();
     }
 })
 
 //arrows Up and Down handler
-window.addEventListener("keydown", (e) => {
-    e.preventDefault();
-
-    if (document.body.style.overflow === "visible") {
-
-        document.body.style.overflow = "hidden";
-
-        if (e.keyCode === 40) {
-            directMove("down")
-        } else if (e.keyCode === 38) {
-            directMove("up")
-        }
-    }
-
-})
-
-//mouse wheel handler
-window.addEventListener("mousewheel", (e) => {
-    e.preventDefault();
-
-    //enable scroll handling after on single roll - then cooldown
-    if (document.body.style.overflow === "visible") {
-    
-    document.body.style.overflow = "hidden";
-    
-        if(e.deltaY >= 0) {
-            directMove("down")
-        } else {
-            directMove("up")
-        }
-    }
-
-})
-
+// window.addEventListener("keydown", (e) => {
+//     e.preventDefault();
+//
+//     if (document.body.style.overflow === "visible") {
+//
+//         document.body.style.overflow = "hidden";
+//
+//         if (e.keyCode === 40) {
+//             directMove("down")
+//         } else if (e.keyCode === 38) {
+//             directMove("up")
+//         }
+//     }
+//
+// })
+//
+// //mouse wheel handler
+// window.addEventListener("mousewheel", (e) => {
+//     e.preventDefault();
+//
+//     //enable scroll handling after on single roll - then cooldown
+//     if (document.body.style.overflow === "visible") {
+//
+//     document.body.style.overflow = "hidden";
+//
+//         if(e.deltaY >= 0) {
+//             directMove("down")
+//         } else {
+//             directMove("up")
+//         }
+//     }
+//
+// })
