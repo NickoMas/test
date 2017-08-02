@@ -29,7 +29,7 @@ a {
     color: #000;
 }
 
-.icon {
+.fa {
     box-shadow: 0px 0px;
     color: #fff;
     font-size: 3em;
@@ -37,7 +37,7 @@ a {
     transition: all 0.5s;
 }
 
-.icon:hover {
+.fa:hover {
     opacity: 1;
     text-shadow: 0px 0px 14px;
 }
