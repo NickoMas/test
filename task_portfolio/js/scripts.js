@@ -14,6 +14,17 @@ let stepValues = [
 
 let step_navs_map = new Map(stepValues);
 
+//handling spinner loading effect
+window.addEventListener("load", () => {
+    console.log("ok")
+    document.querySelector(".spinner").style.opacity = 0;
+    setTimeout(()=>{
+        document.querySelector(".spinner").style.display = "none";
+    }, 1100)
+})
+
+
+
 //navBalls styling function
 const mapNavball = function () {
     let keyOffset = step_navs_map.get(currentOffset);
@@ -75,36 +86,36 @@ document.querySelector(".navList").addEventListener("click", (e) => {
 })
 
 //arrows Up and Down handler
-// window.addEventListener("keydown", (e) => {
-//     e.preventDefault();
-//
-//     if (document.body.style.overflow === "visible") {
-//
-//         document.body.style.overflow = "hidden";
-//
-//         if (e.keyCode === 40) {
-//             directMove("down")
-//         } else if (e.keyCode === 38) {
-//             directMove("up")
-//         }
-//     }
-//
-// })
-//
-// //mouse wheel handler
-// window.addEventListener("mousewheel", (e) => {
-//     e.preventDefault();
-//
-//     //enable scroll handling after on single roll - then cooldown
-//     if (document.body.style.overflow === "visible") {
-//
-//     document.body.style.overflow = "hidden";
-//
-//         if(e.deltaY >= 0) {
-//             directMove("down")
-//         } else {
-//             directMove("up")
-//         }
-//     }
-//
-// })
+window.addEventListener("keydown", (e) => {
+    e.preventDefault();
+
+    if (document.body.style.overflow === "visible") {
+
+        document.body.style.overflow = "hidden";
+
+        if (e.keyCode === 40) {
+            directMove("down")
+        } else if (e.keyCode === 38) {
+            directMove("up")
+        }
+    }
+
+})
+
+//mouse wheel handler
+window.addEventListener("mousewheel", (e) => {
+    e.preventDefault();
+
+    //enable scroll handling after on single roll - then cooldown
+    if (document.body.style.overflow === "visible") {
+
+    document.body.style.overflow = "hidden";
+
+        if(e.deltaY >= 0) {
+            directMove("down")
+        } else {
+            directMove("up")
+        }
+    }
+
+})

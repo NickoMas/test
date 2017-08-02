@@ -4,7 +4,24 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	border: 1px solid;
+}
+
+a {
+	text-decoration: none;
+    color: #000;
+}
+
+.icon {
+    box-shadow: 0px 0px;
+    color: #fff;
+    font-size: 3em;
+    opacity: .1;
+    transition: all 0.5s;
+}
+
+.icon:hover {
+    opacity: 1;
+    text-shadow: 0px 0px 14px;
 }
 
 body {
@@ -17,7 +34,7 @@ body::-webkit-scrollbar {
 }
 
 .wrapper {
-	border: 0; /*to remove*/
+	position: relative;
 }
 
 .panel {
@@ -43,15 +60,14 @@ a[id="about"]:target ~ .wrapper div.panel {
 /*********** HERO > **********/
 
 .hero {
-	background: url(http://wallpapercave.com/wp/wp1824983.jpg);
-    background-size: cover;
+	background: url("../img/hero.jpg");
+	background-size: cover;
 }
 
 .heroNav {
 	justify-content: space-around;
 	display: flex;
 	flex-flow: row nowrap;
-	/*padding: 0 5%;*/
 	align-items: center;
 }
 
@@ -67,16 +83,15 @@ a[id="about"]:target ~ .wrapper div.panel {
 .heroUList li {
 	background-color: #fff;
 	cursor: pointer;
-	border: 0;
 	color: #d8ded0;
 	padding: 10px 10px;
 	color: #000;
 	border-radius: 10px;
+	font-size: 2.3vw;
 }
 
 ul.heroUList li:last-child button {
 	font: 1em "Josefin Sans", sans-serif, bold;
-	border: 0;
 	background-color: #fff;
 }
 
@@ -102,26 +117,30 @@ ul.heroUList > li:last-child > button {
 	display: none;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1000px) {
+	body {
+    	overflow: visible;
+	}
+
 	.label-toggle {
-	    background: linear-gradient(to bottom, #E84545 0%, #E84545 20%, transparent 20%, transparent 40%, #E84545 40%, #E84545 60%, transparent 60%, transparent 80%, #E84545 80%, #E84545 100%);
+	    background: linear-gradient(to bottom, #f5ee0b 0%, #1d8c19 20%, transparent 20%, transparent 40%, #f5ee0b 40%, #1d8c19 60%, transparent 60%, transparent 80%, #f5ee0b 80%, #1d8c19 100%);
 	    cursor: pointer;
 	    display: block;
-	    float: right;
 	    height: 35px;
-	    margin-top: 1em;
-	    width: 35px;
-	    align-self: flex-start;
+	    width: 10%;
+	    border-radius: 5px;
+	    transition: all 0.5s;
+	    opacity: 0.2;
 	}
 
 	.heroNav {
 		flex-flow: row wrap;
-		justify-content: space-between;
+		justify-content: center;
 		padding: 0 10px;
 	}
 
-	.brand, .label-toggle {
-		align-self: flex-start;
+	.label-toggle:hover {
+		opacity: 1;
 	}
 
 	.heroUList {
@@ -131,26 +150,30 @@ ul.heroUList > li:last-child > button {
 	    list-style-type: none;
 	    opacity: 0;
 	    text-align: center;
-/*	    transition: all 1s ease;
-*/	    width: 100%;
+	    width: 100%;
 	    visibility: hidden;
 	}
 
 	.heroUList li {
 	    border-bottom: 2px solid #53354A;
-	    color: #53354A;
+	    color: #fffeff;
 	    display: block;
 	    font-size: 1.5em;
-	    padding: 2em 0;
+	    /*padding: 2em 0;*/
+	    background: rgba(0, 0, 0, 0.45);
+	}
+
+	.heroUList a {
+		color: #fff;
+		font-size: 0.7em;
 	}
 
 	#menu-toggle:checked ~ .heroUList {
 		opacity: 1;
 		height: 100vh;
-		/*width: 100vw;*/
 		visibility: visible;
 		position: absolute;
-	    top: 140px;
+		top: 140px;
 	}
 
 }
@@ -158,6 +181,13 @@ ul.heroUList > li:last-child > button {
 /*********** < HERO ************/
 
 /*********** WORKS > ************/
+
+.works {
+    background: linear-gradient(to left, rgb(0, 0, 70), rgb(28, 181, 224));
+    background-size: cover;
+    color: #fff;
+    font-size: 1.3em;
+}
 
 .worksHead {
 	font-size: 2em;
@@ -170,43 +200,72 @@ ul.heroUList > li:last-child > button {
 
 .worksMain {
 	grid-area: main;
-	/* align-self: center; */
+	align-self: center;
 }
 
 .worksUnit {
-	/*grid-area: work;*/
+	text-align: center;
+	background-size: contain;
 }
 
 .worksContainer {
-    /* width: 90%; */
     display: grid;
     grid-template-areas:
 		"work work work work";
-    grid: 250px / 250px 250px 250px 250px;
+    grid: 250px / repeat(4, 250px);
     justify-content: center;
     grid-gap: 10px 20px;
 }
 
-@media screen and (max-width: 650px) {
-	/*.works {
-	    grid-template: 200px 3fr / 1fr;
-	}*/
+.worksContainer span {
+    border: 1px dashed;
+}
+
+.worksUnit img {
+    width: 100%;
+    height: 135px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.worksUnit a {
+    color: #fff;
+}
+
+.worksUnit h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.worksUnit span {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
 
 	.worksContainer {
+		padding: 20px;
 		grid-template-areas:
 			"work"
 			"work"
 			"work"
-			"work"
-			"work"
 			"work";
-		grid-template: repeat(6, 200px) / 200px;
+		grid-template: repeat(4, 250px) / 250px;
 	}
 }
 
 /*********** < WORKS ************/
 
 /************ ABOUT > **********/
+
+.about {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: linear-gradient(to right, rgb(0, 0, 70), rgb(28, 181, 224));
+    color: #fff;
+    font-size: 1.3em;
+}
 
 .aboutHead {
 	grid-area: head;
@@ -217,15 +276,38 @@ ul.heroUList > li:last-child > button {
 .aboutMain {
 	justify-self: center;
 	grid-area: main;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
 }
 
-section.aboutContainer {
+.aboutContainer {
     display: flex;
 }
 
-article.aboutText h3, .aboutText
- p {
+.aboutText h3, .aboutText p {
     padding: 20px;
+}
+
+
+.aboutText span {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #60ff1e;
+    color: #0c0cda;
+    line-height: 45px;
+}
+
+@media screen and (max-width: 650px) {
+
+	.aboutContainer {
+		flex-flow: column nowrap;
+	}
+
+	.face {
+		text-align: center;
+	}
+	
 }
 
 /*********** < ABOUT ***********/
@@ -234,18 +316,13 @@ footer {
 	grid-area: foot;
 }
 
-
-
-
 .nav {
-    border: 0;
-    /* width: 100px; */
-    top: 50%;
+    top: 40%;
     left: 30px;
-    position: absolute;
+    position: fixed;
 }
 
-ul.navList li {
+.navList li {
     background: radial-gradient(#ffffff 42%, #455fe9 60%);
     width: 15px;
     height: 15px;
@@ -255,12 +332,12 @@ ul.navList li {
     cursor: pointer;
 }
 
-ul.navList {
+.navList {
     list-style-type: none;
-    border: 0;
+    
 }
 
-ul.navList li:after {
+.navList li:after {
     background: #fff;
     content: "";
     margin-left: 20px;
@@ -268,81 +345,142 @@ ul.navList li:after {
     transition: all 0.5s;
 }
 
-ul.navList li:nth-child(1):after {
+.navList li:nth-child(1):after {
 	content: "Main"
 }
 
-/*ul.navList li:nth-child(1):active {
-	content: "Main"
-}*/
-
-ul.navList li:nth-child(2):after {
+.navList li:nth-child(2):after {
 	content: "Works"
 }
 
-ul.navList li:nth-child(3):after {
+.navList li:nth-child(3):after {
 	content: "Info"
 }
 
-ul.navList li:hover:after {
+.navList li:hover:after {
     opacity: 1;
 }
 
 .activeNavBall {
     box-shadow: 0px 0px 18px 4px #28da78;
-    /* width: 20px !important; */
-    /* height: 20px !important; */
     background: radial-gradient(#2fb6e9 42%, #455fe9 60%) !important;
-}
-
-div#about {
-    background-size: cover;
-    background-repeat: no-repeat;
-    /*background: url("../img/sea2.jpg");*/
 }
 
 .panel header {
     font-size: 2em;
 }
 
-div#works {
-    /*background: url("../img/sea1.jpg");*/
-    background-size: cover;
+.contacts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
-article.worksUnit:nth-child(1) {
-    /*background: no-repeat url("../img/Reen.png");*/
-    background-size: contain;
+.contacts div {
+    width: 100px;
+    height: 100px;
+    padding: 25px;
 }
 
-article.worksUnit:nth-child(2) {
-    /*background: no-repeat url("../img/Game.png");*/
-    background-size: contain;
+/*********** SPINNER > ************/
+
+.spinner {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
 }
 
-article.worksUnit:nth-child(3) {
-    /*background: no-repeat url("../img/yt.png");*/
-    background-size: contain;
-}
+.spinner div{
+ 
+	width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: absolute;
+    border: 1px solid #0804fb;
+    animation: up 1s;
+    animation-iteration-count: infinite;
+    transition: 2s;
+    border-bottom: none;
+    border-right: none;
+    animation-timing-function: linear;
+    margin-left: -70px;
+    margin-top: -70px;
+    left: 50%;
+    top: 50%;
 
-article.worksUnit:nth-child(4) {
-    /*background: no-repeat url("../img/rc.png");*/
-    background-size: contain;
-}
+  }
+  
+  @keyframes up{
+   from{transform:rotate(0deg); }
+   50%{transform:rotate(180deg);}
+   100%{transform:rotate(360deg);}
+  }
+  #img2{
+    width: 90px;
+    height: 90px;
+    left: 50.35%;
+    top: 50.7%;
+    animation-delay: .2s;
+    border-color: #049afb;
 
-article.worksUnit img {
-    width: 100%;
-    height: 135px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+  }
+    #img3{
+	width: 80px;
+    height: 80px;
+    left: 50.70%;
+    top: 51.4%;
+    animation-delay: .4s;
+    border-color: #04fbf6;
+  }
+    #img4{
+    width: 70px;
+    height: 70px;
+    left: 51.05%;
+    top: 52.1%;
+    animation-delay: .6s;
+    border-color: #04fbb1;
 
-article.worksUnit h3 {
-    margin-bottom: 10px;
-    text-align: center;
-}
+  }
+    #img5{
+    width: 60px;
+    height: 60px;
+    left: 51.40%;
+    top: 52.8%;
+    animation-delay: .8s;
+    border-color: #04fb12;
 
-article.worksUnit span {
-    padding: 5px;
-    border-radius: 5px;
-}
+  }
+    #img6{
+    width: 50px;
+    height: 50px;
+    left: 51.7%;
+    top: 53.1%;
+    animation-delay: 1s;
+    border-color: #b8fb04;
+
+  }
+    #img7{
+    width: 40px;
+    height: 40px;
+    left: 52.1%;
+    top: 53.6%;
+    animation-delay: 1.2s;
+    border-color: #fbfa04;
+
+  }
+    #img8{
+    width: 30px;
+    height: 30px;
+    left: 52.5%;
+    top: 54.1%;
+    animation-delay: 1.4s;
+    border-color: #fb6504;
+
+  }
+
+/*********** < SPINNER ************/

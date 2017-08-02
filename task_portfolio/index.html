@@ -4,10 +4,22 @@
 	<meta charset="UTF-8">
 	<title>WebDev portfolio</title>
 	<link rel="stylesheet" href="css/master.css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
 <body style="overflow:visible;">
-<!-- 	<a id="works" style="display:none"></a>
-	<a id="about" style="display:none"></a> -->
+
+	<div class="spinner" style="transition:all 1s; opacity: 1;z-index: 999 ">
+		<div id="img1" class="img">
+		</div>
+		<div id="img2" class="img"></div>
+		<div id="img3" class="img"></div>
+		<div id="img4" class="img"></div>
+		<div id="img5" class="img"></div>
+		<div id="img6" class="img"></div>
+		<div id="img7" class="img"></div>
+		<div id="img8" class="img"></div>	
+	</div>
+
 	<section class="wrapper">
 		<div class="hero panel">
 			<header class="heroHead">
@@ -21,15 +33,10 @@
 							<a onclick="move('down', 1)">My works</a>
 						</li>
 						<li>
-							<a onclick="move('down', 2)">About me</a>
+							<a onclick="move('down', 2)">About me / Contacts</a>
 						</li>
 						<li>
-							<a href="#contacts">Contacts</a>
-						</li>
-						<li>
-							<a href="#">
-								<button>Drop a line</button>
-							</a>
+							<a href="mailto:aquinnm@gmail.com">Drop a line</a>
 						</li>
 					</ul>
 					<label for="menu-toggle" class="label-toggle"></label>
@@ -49,14 +56,22 @@
 						<figure>
 							<img src="img/Reen.png" alt="">
 						</figure>
-						<h3>Regular markup</h3>
+						<h3>
+							<a href="https://nickomas.github.io/css-frameworks-bootstrap/index.html" target="_blank">
+								Landing page
+							</a>
+						</h3>
 						<span>Bootstrap</span>
 					</article>
 					<article class="worksUnit">
 						<figure>
 							<img src="img/Game.png" alt="">
 						</figure>
-						<h3>HTML5 game on Vanilla JS</h3>
+						<h3>
+							<a href="https://nickomas.github.io/Little-After-Burner/index.html" target="_blank">
+								HTML5 game on Vanilla JS
+							</a>
+						</h3>
 						<span>Canvas</span>
 						<span>HTML5</span>
 					</article>
@@ -64,7 +79,11 @@
 						<figure>
 							<img src="img/yt.png" alt="youtube app">
 						</figure>
-						<h3>Youtube API app</h3>
+						<h3>
+							<a href="https://nickomas.github.io/ytSearch/" target="_blank">
+								Youtube API app
+							</a>
+						</h3>
 						<span>REST</span>
 						<span>Google API</span>
 					</article>
@@ -72,8 +91,12 @@
 						<figure>
 							<img src="img/rc.png" alt="">
 						</figure>
-						<h3>React Calendar</h3>
-						<span>React</span>
+						<h3>
+							<a href="https://nickomas.github.io/calendar/" target="_blank">
+								React Calendar
+							</a>
+						</h3>
+						<span>ReactJS</span>
 						<span>Redux</span>
 					</article>
 				</section>
@@ -93,9 +116,50 @@
 					</figure>
 					<article class="aboutText">
 						<h3>FrontEnd / Javascript developer</h3>
-						<p>Hi there! I'm Nick, and I love JS, Web and whales (Whales too)</p>
+						<p>Hi there! I'm Nick, and I love JS, Web and whales (Whales too tho').</p>
+						<p>Exploring my way through Web-development I enjoy grasping both sides of stack.</p>
+						<p>For current time I've worked with: 
+							<span>ReactJS</span>
+							<span>Redux</span>
+							<span>AngularJS</span>
+							<span>D3.JS</span>
+							<span>NodeJS</span>
+							<span>Express</span>
+							<span>MongoDB</span>
+							<span>Firebase</span>
+						</p>
+						<p>Next tools and services are being used for development and deployment: 
+							<span>GIT / Github</span>
+							<span>Webpack</span>
+							<span>Gulp</span>
+							<span>ESLint</span>
+							<span>Heroku</span>
+						</p>
+						<p>I'd be glad to work with or for you, contacts are below. Have a good day!</p>
 					</article>
 				</section>
+					<section class="contacts">
+						<div class="github">
+							<a href="https://github.com/NickoMas" target="_blank">
+								<i class="icon icon-github" aria-hidden="true"></i>								
+							</a>
+						</div>
+						<div class="linkedin">
+							<a href="" title="Coming soon">
+								<i class="icon icon-linkedin" aria-hidden="true"></i>				
+							</a>
+						</div>
+						<div class="gmail">
+							<a href="mailto:aquinnm@gmail.com">
+								<i class="icon icon-google-plus" aria-hidden="true"></i>				
+							</a>							
+						</div>
+						<div class="phone">
+							<a href="tel:+375298407784" title="+375-29-840-77-84">
+								<i class="icon icon-phone" aria-hidden="true"></i>											
+							</a>
+						</div>
+					</section>
 			</main>
 		</div>
 
