@@ -4,73 +4,53 @@
 	<meta charset="UTF-8">
 	<title>Basic JS</title>
 	<style>
+		* {
+			padding: 10px;
+			border-radius: 10px;
+		}
 
+		input[type=button] {
+			background: #fff;
+		}
 	</style>
 </head>
 <body>
 
-
+	<div class="calc">
+		<input type="text" placeholder="Основание" class="base">
+		<input type="text" placeholder="Степень" class="grade">
+		<input type="button" value="Расчёт ->">
+		<input type="text" placeholder="Итого" class="output" disabled>
+	</div>
 
 	<script>
 
 		"use strict"
 
-		let a = +prompt("Введите число a!", "");
-		let b = +prompt("Введите число b!", "");
-		let z = a;
-
-		let start = confirm(`Вы хотите возвести число ${+a} в степень ${+b}?`);
-
-		const isNumber = function (num, fraction = false) {
+		//check if finite number
+		const isNumber = function (num) {
 			return  typeof num === "number"
 						&& isFinite(num)
 						&& !isNaN(num)
-						&& (fraction ? parseInt(parseFloat(num)) === num : num)
 		};
 
-		let fallback = isNumber(a) && isNumber(b, true) ?
-			null :
-			"Введите конечное число для основания и степени + степень должна быть целым числом!";
+		//count output, giving warning and show output
+		const count = function () {
 
-		const countPwr = function (grade) {
+			let base = +document.querySelector(".base").value;
+			let grade = +document.querySelector(".grade").value;
+			let output =  document.querySelector(".output").value	;
 
-			let i = 2;
-			while (i <= grade) {
-				z *= a;
-				i++;
-			}
-			return z;
+			let precounted = Math.pow(base, grade);
+			let input = isNumber(base) && isNumber(grade) && isNumber(precounted);
+
+			let result = input ? precounted : "Недопустимый ввод";
+
+			document.querySelector(".output").value = result;
+
 		}
 
-		if (b < 0) {
-			z = 1 / countPwr(Math.abs(b));
-		} else if (b === 1) {
-			z = a;
-		} else if (b === 0) {
-			z = 1;
-		} else {
-			countPwr(b)
-		}
-
-		let result;
-
-		//recursively obtaining "YES" answer from user
-		const untilYes = function () {
-			if(start){
-				result = `Число ${a} в степени ${b} равно ${z}`;
-			} else {
-				a = parseFloat(prompt("Введите число a!", ""));
-				b = parseFloat(prompt("Введите число b!", ""));
-
-				start = confirm(`Вы хотите возвести число ${a} в степень ${b}?`);
-				untilYes();
-			}			
-		}
-
-		untilYes();
-
-
-		alert(fallback || result);
+		document.querySelector("input[type=button]").addEventListener("click", count)
 
 	</script>
 </body>
