@@ -1,121 +1,54 @@
-let currentOffset = 0;
-let panel = document.querySelector(".panel");
-let step = parseInt(getComputedStyle(panel).minHeight);
-let navBalls = document.querySelectorAll(".navList li");
-let genHeight = parseInt(getComputedStyle(document.querySelector(".wrapper")).height);
 
-//data for mapping with navBalls - valid with only 3 sections!
-//purpose: shift active navBall depending on currentOffset value
-let stepValues = [
-    [currentOffset, navBalls[0]],
-    [currentOffset - step * 1, navBalls[1]],
-    [currentOffset - step * 2, navBalls[2]]
-]
+let heroUnit = document.querySelector(".heroUnit");
+let aboutUnit = document.querySelector(".aboutUnit");
+let worksUnit = document.querySelector(".worksUnit");
+let contactUnit = document.querySelector(".contactUnit");
 
-let step_navs_map = new Map(stepValues);
+let viewPHeight = document.documentElement.clientHeight;
 
-//handling spinner loading effect
-window.addEventListener("load", () => {
-    console.log("ok")
-    document.querySelector(".spinner").style.opacity = 0;
-    setTimeout(()=>{
-        document.querySelector(".spinner").style.display = "none";
-    }, 1100)
-})
+//lift all blocks, move behind the clicked one, which one is being lowered
+//at the same time
+const shiftUnit = function (unit) {
+    let className = unit.className.slice(0, -4); // slice part of name to use as class name
+    let selectedUnit = document.querySelector(`.${className}`);
 
+    [...document.querySelectorAll(".panel")].forEach((item) => {
+        item.style.top = `-${viewPHeight}px`;
+        item.style.zIndex = 0;
+    })
+    
+    selectedUnit.style.zIndex = "10";
+    selectedUnit.style.top = '0px';
+}
 
+//track click, route to handler with argument
+const shift = function (e) {
+    switch(e.target){
+        case heroUnit: return shiftUnit(heroUnit);
+        case aboutUnit: return shiftUnit(aboutUnit);
+        case worksUnit: return shiftUnit(worksUnit);
+        case contactUnit: return shiftUnit(contactUnit);
 
-//navBalls styling function
-const mapNavball = function () {
-    let keyOffset = step_navs_map.get(currentOffset);
-
-    if (keyOffset){
-        step_navs_map.forEach((key) => {
-            if (key.classList.contains("activeNavBall")) {
-                key.classList.toggle("activeNavBall")
-            }
-        })
-        keyOffset.classList.toggle("activeNavBall")
+        default : return console.log('NO!') //remove
     }
 }
 
-//moving all main blocks simultaneously along Y-axis
-//leap is needed for adjsutment of YAxis traverse depth
-const move = function (dir, leap = 1) {
-        if (dir === "down") {
-            if (-currentOffset + step * leap < genHeight) {
-                currentOffset -= step * leap;
-            }
-        } else if (-currentOffset - step >= 0) {
-            currentOffset += step;
-        }
-        document.querySelectorAll(".panel").forEach((a) => {
-            a.style.transform = `translateY(${currentOffset}px)`
-        });
+document.querySelector(".wrapper").addEventListener("click", shift)
 
-        mapNavball(); // navBalls styling function watches for changes during navigation
+//intro animation
+window.addEventListener("load", (e) => {
+    document.querySelector(".backdrop h1").style.opacity = 1;
+    let customClick = new Event("click");
 
-        //let anchor = window.location.href.match(/[$#](\w+)/)[0];
-        //location.assign(window.location.href.slice(0, -anchor.length))
-}
+    setTimeout(() => {
+        document.querySelector(".backdrop h1").style.opacity = 0;
+    }, 1500)
 
-//setTimout setting function for DRY purpose
-const directMove = function (dir) {
-    return setTimeout(() => {
-        move(dir);
-        document.body.style.overflow = "visible"
-    }, 500)
-}
+    setTimeout(() => {
+        document.querySelector(".backdrop").style.zIndex = "-10";
+        heroUnit.dispatchEvent(customClick);
+    }, 3000)
 
-//navigation through navBalls handler
-document.querySelector(".navList").addEventListener("click", (e) => {
-    if (e.target.nodeName === "LI") {
-
-        step_navs_map.forEach((key, value) => {
-            if(key === e.target) {
-
-                document.querySelectorAll(".panel").forEach((a) => {
-                    a.style.transform = `translateY(${value}px)`
-                });
-
-                currentOffset = value;
-            }
-        })
-        mapNavball();
-    }
 })
 
-// //arrows Up and Down handler
-// window.addEventListener("keydown", (e) => {
-//     e.preventDefault();
 
-//     if (document.body.style.overflow === "visible") {
-
-//         document.body.style.overflow = "hidden";
-
-//         if (e.keyCode === 40) {
-//             directMove("down")
-//         } else if (e.keyCode === 38) {
-//             directMove("up")
-//         }
-//     }
-
-// })
-
-// //mouse wheel handler
-// window.addEventListener("mousewheel", (e) => {
-//     e.preventDefault();
-
-//     //enable scroll handling after on single roll - then cooldown
-//     if (document.body.style.overflow === "visible") {
-
-//     document.body.style.overflow = "hidden";
-
-//         if(e.deltaY >= 0) {
-//             directMove("down")
-//         } else {
-//             directMove("up")
-//         }
-//     }
-
-// })

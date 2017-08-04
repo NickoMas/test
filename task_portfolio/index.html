@@ -7,9 +7,9 @@
 <!-- 	<link rel="stylesheet" href="css/font-awesome.min.css">
  -->	<link rel="stylesheet" href="css/master.css">
 </head>
-<body style="overflow:visible;">
+<body>
 
-	<div class="spinner" style="transition:all 1s; opacity: 1;z-index: 999 ">
+<!-- 	<div class="spinner" style="transition:all 1s; opacity: 1;z-index: 999 ">
 		<div id="img1" class="img">
 		</div>
 		<div id="img2" class="img"></div>
@@ -19,38 +19,51 @@
 		<div id="img6" class="img"></div>
 		<div id="img7" class="img"></div>
 		<div id="img8" class="img"></div>	
-	</div>
+	</div> -->
 
 	<section class="wrapper">
-		<div class="hero panel">
-			<header class="heroHead">
+		
+		<header class="heroHead">
 				<nav class="heroNav">
 					<!-- <figure class="brand">
 						<img src="#" alt="brand" width="100" height="100">
 					</figure> -->
 					<input type="checkbox" id="menu-toggle">
 					<ul class="heroUList">
-						<li>
-							<a onclick="move('down', 1)">My works</a>
+						<li class="heroUnit">
+							Preface
 						</li>
-						<li>
-							<a onclick="move('down', 2)">About me / Contacts</a>
+						<li class="worksUnit">
+							My works
 						</li>
-						<li>
-							<a href="mailto:aquinnm@gmail.com">Drop a line</a>
+						<li class="aboutUnit">
+							About me
+						</li>
+						<li class="contactUnit">
+							Contacts
 						</li>
 					</ul>
 					<label for="menu-toggle" class="label-toggle"></label>
 				</nav>
 			</header>
-			<main>
-
+		<div style="top:-850px; z-index:0;" class="hero panel">
+			<main class="aboutMain">
+				<section class="aboutContainer">
+					<figure class="face">
+						<img src="img/face.jpg" alt="Nick" width="200" height="200">
+					</figure>
+					<article class="aboutText">
+						<p>Hi there! I'm Nick, and I love JS, Web and whales (Whales too tho').</p>
+						<p>Exploring my way through Web-development I enjoy grasping both sides of stack.</p>
+						<p>I'd be glad to work with or for you, contacts are below. Have a good day!</p>
+					</article>
+				</section>
 			</main>
 		</div>
-		<div class="works panel" id="works">
-			<header class="worksHead">
-				<h1>My works</h1>
-			</header>
+		<div style="top:-850px; z-index:0;" class="works panel">
+			<!-- 			<header class="worksHead">
+							<h1>My works</h1>
+						</header> -->
 			<main class="worksMain">
 				<section class="worksContainer">
 					<article class="worksUnit">
@@ -106,15 +119,12 @@
 
 			</footer>
 		</div>
-		<div class="about panel" id="about">
-			<header class="aboutHead">
-				<h1>About me</h1>
-			</header>
+		<div style="top:-850px; z-index:0;" class="about panel">
+			<!-- 			<header class="aboutHead">
+							<h1>About me</h1>
+						</header> -->
 			<main class="aboutMain">
 				<section class="aboutContainer">
-					<figure class="face">
-						<img src="img/face.jpg" alt="Nick" width="200" height="200">
-					</figure>
 					<article class="aboutText">
 						<h3>FrontEnd / Javascript developer</h3>
 						<p>Hi there! I'm Nick, and I love JS, Web and whales (Whales too tho').</p>
@@ -139,41 +149,64 @@
 						<p>I'd be glad to work with or for you, contacts are below. Have a good day!</p>
 					</article>
 				</section>
-					<section class="contacts">
-						<div class="github">
-							<a href="https://github.com/NickoMas" target="_blank">
-								<i class="fa fa-github" aria-hidden="true"></i>								
-							</a>
-						</div>
-						<div class="linkedin">
-							<a href="" title="Coming soon">
-								<i class="fa fa-linkedin" aria-hidden="true"></i>				
-							</a>
-						</div>
-						<div class="gmail">
-							<a href="mailto:aquinnm@gmail.com">
-								<i class="fa fa-google-plus" aria-hidden="true"></i>				
-							</a>							
-						</div>
-						<div class="phone">
-							<a href="tel:+375298407784" title="+375-29-840-77-84">
-								<i class="fa fa-phone" aria-hidden="true"></i>											
-							</a>
-						</div>
-					</section>
+			</main>
+		</div>
+		<div style="top:-850px; z-index:0;" class="contact panel">
+				<section class="contacts">
+					<div class="github">
+						<a href="https://github.com/NickoMas" target="_blank">
+							<i class="fa fa-github" aria-hidden="true"></i>								
+						</a>
+					</div>
+					<div class="linkedin">
+						<a href="" title="Coming soon">
+							<i class="fa fa-linkedin" aria-hidden="true"></i>				
+						</a>
+					</div>
+					<div class="gmail">
+						<a href="mailto:aquinnm@gmail.com">
+							<i class="fa fa-google-plus" aria-hidden="true"></i>				
+						</a>							
+					</div>
+					<div class="phone">
+						<a href="tel:+375298407784" title="+375-29-840-77-84">
+							<i class="fa fa-phone" aria-hidden="true"></i>											
+						</a>
+					</div>
+				</section>
 			</main>
 		</div>
 
-		<div class="nav">
-			<ul class="navList">
-				<li class="activeNavBall 1-link"></li>
-				<li class="2-link"></li>
-				<li class="3-link"></li>
-			</ul>
+		<div class="backdrop">
+			<h1>
+				Welcome, stranger!<br>
+				Make yourself at home.				
+			</h1>
 		</div>
+
+<!-- 		<div class="nav">
+			<ul class="navList">
+				<a href="#hero">
+					<li class="activeNavBall 1-link"></li>					
+				</a>
+				<a href="#works">
+					<li class="2-link"></li>					
+				</a>
+				<a href="#about">
+					<li class="3-link"></li>					
+				</a>								
+				<li class="2-link">
+					<a href="#works"></a>
+				</li>
+				<li class="3-link">
+					<a href="#about"></a>
+				</li>
+			</ul>
+		</div> -->
 
 	</section>
 
+<script src="js/scroll.js"></script>
 <script src="js/scripts.js"></script>
 </body>
 </html>

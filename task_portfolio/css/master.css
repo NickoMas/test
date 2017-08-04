@@ -26,24 +26,25 @@
 
 a {
 	text-decoration: none;
-    color: #000;
+    color: hsl(62, 100%, 50%);
 }
 
 .fa {
     box-shadow: 0px 0px;
     color: #fff;
     font-size: 3em;
-    opacity: .1;
+    opacity: .2;
     transition: all 0.5s;
 }
 
 .fa:hover {
     opacity: 1;
-    text-shadow: 0px 0px 14px;
+    text-shadow: 0px 0px 14px #a9ff00;
 }
 
 
 body {
+	height: 100%;
 	font-size: 100%;
 	font-family: 'Josefin Sans', sans-serif;
 }
@@ -57,15 +58,23 @@ body::-webkit-scrollbar {
 }
 
 .panel {
-	transform: translateZ(0);
-	transition: transform 0.6s ease-in-out;
+	color: #ebff00;
+	background: #000;
+	/*transform: translateZ(0);*/
+	/*transition: transform 0.6s ease-in-out;*/
 	min-height: 100vh;
 	display: grid;
-	grid-template-rows: 1fr 4fr;
+	grid-template-rows: 100px 4fr;
 	grid-template-columns: 1fr;
 	grid-template-areas:
-			"head"
+			"."
 			"main";
+
+	position: absolute;
+	top: -100vh;
+	left: 0;
+	right: 0;
+	transition: all 1s;
 }
 
 /*a[id="works"]:target ~ .wrapper div.panel {
@@ -77,17 +86,57 @@ a[id="about"]:target ~ .wrapper div.panel {
 }*/
 
 /*********** HERO > **********/
+.face {
+	grid-area: face;
+}
+
+figure.face img {
+	border-radius: 50%;
+	width: 300px;
+	height: 300px;
+	border: 1px solid #f0ff0a;
+}
+
+figure.face {
+    align-self: flex-start;
+    text-align: center;
+    /* border: 1px solid #f0ff0a; */
+}
+
+.text {
+	grid-area: text;
+}
 
 .hero {
-	background: url("../img/hero.jpg");
+	/*background: url("../img/hero.jpg");*/
 	background-size: cover;
+	background: #000;
 }
 
 .heroNav {
-	justify-content: space-around;
+	width: 100%;
+/*	justify-content: space-around;
 	display: flex;
 	flex-flow: row nowrap;
-	align-items: center;
+	align-items: center;*/
+}
+
+.heroMain {
+    grid-area: main;
+    display: grid;
+    grid-template: 1fr / repeat(2, 500px);
+    grid-template-areas: "face text";
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+
+.heroMain .text {
+	font-size: 2em;
+}
+
+.text p {
+	font-size: 0.6em;
 }
 
 .heroUList {
@@ -100,11 +149,10 @@ a[id="about"]:target ~ .wrapper div.panel {
 }
 
 .heroUList li {
-	background-color: #fff;
+	/*background-color: #fff;*/
 	cursor: pointer;
-	color: #d8ded0;
+	color: #b0ff00; /* or #f7fe22*/
 	padding: 10px 10px;
-	color: #000;
 	border-radius: 10px;
 	font-size: 2.3vw;
 }
@@ -128,8 +176,15 @@ ul.heroUList > li:last-child > button {
 }
 
 .heroHead {
-	grid-area: head;
-	align-self: center;
+	width: 100%;
+	background: #000;
+	height: 100px;
+	position: fixed;
+	z-index: 15;
+	display: flex;
+	flex-flow: row nowrap;
+	text-align: center;
+	align-items: center;
 }
 
 .label-toggle, #menu-toggle {
@@ -137,9 +192,6 @@ ul.heroUList > li:last-child > button {
 }
 
 @media screen and (max-width: 1000px) {
-	body {
-    	overflow: visible;
-	}
 
 	.label-toggle {
 	    background: linear-gradient(to bottom, #f5ee0b 0%, #1d8c19 20%, transparent 20%, transparent 40%, #f5ee0b 40%, #1d8c19 60%, transparent 60%, transparent 80%, #f5ee0b 80%, #1d8c19 100%);
@@ -202,7 +254,7 @@ ul.heroUList > li:last-child > button {
 /*********** WORKS > ************/
 
 .works {
-    background: linear-gradient(to left, rgb(0, 0, 70), rgb(28, 181, 224));
+    /*background: linear-gradient(to left, rgb(0, 0, 70), rgb(28, 181, 224));*/
     background-size: cover;
     color: #fff;
     font-size: 1.3em;
@@ -281,7 +333,7 @@ ul.heroUList > li:last-child > button {
 .about {
     background-size: cover;
     background-repeat: no-repeat;
-    background: linear-gradient(to right, rgb(0, 0, 70), rgb(28, 181, 224));
+    /*background: linear-gradient(to right, rgb(0, 0, 70), rgb(28, 181, 224));*/
     color: #fff;
     font-size: 1.3em;
 }
@@ -331,11 +383,22 @@ ul.heroUList > li:last-child > button {
 
 /*********** < ABOUT ***********/
 
+/************* CONTACT > ************/
+
+.contact {
+    grid-template: 100px 400px / 1fr;
+    background: #000;
+}
+
+/******** < CONTACT ******/
+
+
 footer {
 	grid-area: foot;
 }
 
 .nav {
+	display: none;
     top: 40%;
     left: 30px;
     position: fixed;
@@ -389,7 +452,8 @@ footer {
     font-size: 2em;
 }
 
-.contacts {
+.contacts{
+	grid-area: main;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -399,6 +463,33 @@ footer {
     width: 100px;
     height: 100px;
     padding: 25px;
+}
+/*********************************/
+
+.backdrop {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 20;
+    background: #000;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    grid-template-areas: "main";
+    align-items: center;
+    justify-items: center;
+}
+
+.backdrop h1 {
+    font-size: 3em;
+    color: yellow;
+    grid-area: main;
+    transition: all 2s;
+    text-shadow: 2px 2px 19px #d8ff00;
+    opacity: 0;
+}
+
+.backdrop h1:hover {
+    opacity: 1;
 }
 
 /*********** SPINNER > ************/
