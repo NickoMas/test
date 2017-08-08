@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">	
+	<title>Currency Calc</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel='shortcut icon' type='image/x-icon' href='http://realfavicongenerator.net/blog/wp-content/uploads/2015/10/demo_favicon.png' />
+</head>
+<body>
+	<div class="root">
+		<form name="cur">
+			<input type="date" title="Make sense to set only for $ so far">
+			<span>How much</span>
+			<select _direct="true" disabled>
+			  <option value="BYN">BYN - Белорусский рубль</option>
+			  <option _ID="145" _Code="840">USD - Доллар США</option>
+			  <option _ID="19" _Code="978">EUR - Евро</option>
+			  <option _ID="190" _Code="643">RUB - Российский рубль</option>
+			  <option class="limiter">-----</option>
+			</select>
+			<input type="button" class="shift" value="<-->" onclick="shift()"></input>
+			<span>in</span>			
+			<input type="text" class="value" placeholder="Currency scale value is default" size="30">
+			<select _direct="false">
+			  <option value="BYN" selected>BYN - Белорусский рубль</option>
+			  <option _ID="145" _Code="840">USD - Доллар США</option>
+			  <option _ID="19" _Code="978">EUR - Евро</option>
+			  <option _ID="190" _Code="643">RUB - Российский рубль</option>
+			  <option class="limiter">-----</option>
+			</select>
+			<span>? =</span>
+			<input type="text" class="output" disabled>
+			<input type="submit" class="count" value="Get rate"></input>
+			<span>Reload the page if nothing happens!</span> 
+			<span>If you enter a bullshit, calc will set default value</span>
+		</form>
+
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>
