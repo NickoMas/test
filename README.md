@@ -10,3 +10,6 @@ Tasks previews are available through the links below:
 
  - Promises:
     * [Использование промисов](https://nickomas.github.io/test/task_promise/index.html)
+
+ - Finance calculator
+ 	* [Калькулятор курсов валют на API Нацбанка](https://nickomas.github.io/test/task_calc/index.html)
