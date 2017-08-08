@@ -129,7 +129,3 @@ fetch("https://www.nbrb.by/API/ExRates/Currencies")
 			innerEl.appendChild(createOptions(item))
 		})
 	}))
-	//.then(a => console.log(a))
-	//.then(a => a.forEach((b) => console.log(b['Cur_Abbreviation'])));
-
-// console.log(t)
