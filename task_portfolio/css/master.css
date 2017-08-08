@@ -91,8 +91,8 @@ a[id="about"]:target ~ .wrapper div.panel {
 }
 
 figure.face img {
-	border-radius: 50%;
-	width: 300px;
+	/* border-radius: 50%; */
+	/* width: 300px; */
 	height: 300px;
 	border: 1px solid #f0ff0a;
 }
@@ -358,6 +358,7 @@ ul.heroUList > li:last-child > button {
 
 .aboutText h3, .aboutText p {
     padding: 20px;
+    font-size: 1.4em;
 }
 
 
@@ -378,7 +379,7 @@ ul.heroUList > li:last-child > button {
 	.face {
 		text-align: center;
 	}
-	
+
 }
 
 /*********** < ABOUT ***********/
@@ -416,7 +417,7 @@ footer {
 
 .navList {
     list-style-type: none;
-    
+
 }
 
 .navList li:after {
@@ -457,6 +458,7 @@ footer {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    align-items: center;
 }
 
 .contacts div {
@@ -506,7 +508,7 @@ footer {
 }
 
 .spinner div{
- 
+
 	width: 100px;
     height: 100px;
     border-radius: 100%;
@@ -524,7 +526,7 @@ footer {
     top: 50%;
 
   }
-  
+
   @keyframes up{
    from{transform:rotate(0deg); }
    50%{transform:rotate(180deg);}
