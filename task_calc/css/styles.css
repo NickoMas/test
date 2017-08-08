@@ -1,0 +1,35 @@
+body {
+	font: 16px Verdana, sans-serif;
+}
+
+.root {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+}
+
+.root > * {
+    /* display: flex; */
+    margin: 0 10px;
+    width: 50%;
+    /* flex-flow: column; */
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+}
+
+form * {
+    padding: 10px;
+}
+
+input[type=button], input[type=submit] {
+    background-color: rgba(166, 176, 165, 0.98);
+}
+
+@media screen and (max-width: 600px) {
+	.root * {
+		width: 100%;
+	}
+}
