@@ -6,7 +6,6 @@ const shift = function () {
 	selects.forEach((item) => {
 		item.disabled = !item.disabled;
 		item[0].selected = !item[0].selected;
-		console.dir(item)
 	})
 }
 
@@ -23,15 +22,12 @@ const createOptions = function (item) {
 	option.innerHTML = `${item['Cur_Abbreviation']} - ${item['Cur_Name']}`;
 	option.setAttribute('_Code', `${item['Cur_Code']}`);
 	option.setAttribute('_ID', `${item['Cur_ID']}`);
-	//let optionText = document.createTextNode(`${item['Cur_Abbreviation'] - item['Cur_Name']}`);
-	//option.appendChild(optionText);
 	return option;
 }
 
 //main counting logic
 const count = function (e) {
 	e.preventDefault();
-	console.log(e)
 	//check active selection, selected option, fetch data with pulled params, display
 	selects.forEach((select) => {
 		if(!select.disabled) {
@@ -73,7 +69,6 @@ const count = function (e) {
 						//3 possible queries to send
 						return Promise.race(fetchList)
 							.then(response => {
-								console.log(response)
 								if(response.status === 200) {
 									return response.json();
 								} else if (response.status === 404) {
@@ -109,10 +104,6 @@ const count = function (e) {
 					} else {
 						sendQuery()
 					}
-					
-					console.dir(select)
-
-
 				}
 			})
 		}
