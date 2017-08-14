@@ -6,21 +6,33 @@ let contactUnit = document.querySelector(".contactUnit");
 
 let viewPHeight = document.documentElement.clientHeight;
 
-//lift all blocks, move behind the clicked one, which one is being lowered
-//at the same time
+const panels = [...document.querySelectorAll(".panel")];
+
+//lift all blocks on maximal height from row, move behind the clicked one, which one is being lowered
+const liftAll = function () {
+
+    const heights = panels.map((item) => {
+        return parseFloat(getComputedStyle(item).height);
+    });
+
+    panels.forEach((item) => {
+        item.style.top = `-${Math.max(...heights)}px`;
+        item.style.zIndex = 0;
+    }) ;
+}
+
+//works with the selected panel
 const shiftUnit = function (unit) {
     let className = unit.className.slice(0, -4); // slice part of name to use as class name
     let selectedUnit = document.querySelector(`.${className}`);
-
-    [...document.querySelectorAll(".panel")].forEach((item) => {
-        item.style.top = `-${viewPHeight}px`;
-        item.style.zIndex = 0;
-    })
     
+    liftAll();
+
     selectedUnit.style.zIndex = "10";
     selectedUnit.style.top = '0px';
 }
 
+ 
 //track click, route to handler with argument
 const shift = function (e) {
     switch(e.target){
@@ -37,8 +49,10 @@ document.querySelector(".wrapper").addEventListener("click", shift)
 
 //intro animation
 window.addEventListener("load", (e) => {
+    liftAll()
+
     document.querySelector(".backdrop h1").style.opacity = 1;
-    let customClick = new Event("click");
+    let customClick = new Event("click", {"bubbles": true});
 
     setTimeout(() => {
         document.querySelector(".backdrop h1").style.opacity = 0;
