@@ -10,12 +10,24 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 </head>
-<body ng-controller="main-Ctrl">
+<body>
 	<header>
-		<h3>Hello user</h3>
+	<form name="cities" id="citiesForm" ng-controller="main-Ctrl" ng-submit="send($event)">
+		<select name="cities" id="" ng-model="text">
+			<option value="Minsk">Minsk</option>
+			<option value="Moscow">Moscow</option>
+			<option value="London">London</option>
+			<option value="Berlin">Berlin</option>
+			<option value="Paris">Paris</option>
+		</select>
+		<input class="enterText" type="text" ng-model="text" value="{{text}}">
+		<p ng-model="text">Option been selected : {{text}}</p>
+		<input type="button" ng-click="show()">
+		<input type="submit" value="CLick" >				
+	</form>
 	</header>
+
 	<main>
-		<input type="text">{{send}}
 	</main>
 	<script src="js/script.js"></script>
 </body>
