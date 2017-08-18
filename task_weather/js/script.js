@@ -1,31 +1,52 @@
 "use strict"
 
 const myApiKEY = "AIzaSyCvU7DOgrnK1i4IkR9gFE9j7c4qyscb_FE"; // for google maps api
+const url_ = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=(cities)&language=pt_BR&key=AIzaSyCvU7DOgrnK1i4IkR9gFE9j7c4qyscb_FE";
 
-angular.module("factory", [])
-	.factory("sendHttp", ["$http", 
-		function ($http) {
-			return function sendHttp (arg) {
+angular.module("root", [])
+	.controller("main_Ctrl", ["$scope", "$http",  
+		function ($scope, $http) {
+			
+			$scope.text = "";
+			$scope.city = null;
+			$scope.temp = null;
+			$scope.weather = null;
+
+			$scope.send = function(arg) {
 				const cityName = arg.target.children[1].value;
 
-				console.log();
-				return $http({
-						method: "GET",
-						url : `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=(cities)&language=pt_BR&key=AIzaSyCvU7DOgrnK1i4IkR9gFE9j7c4qyscb_FE`,
-						headers: {
-							"Access-Control-Allow-Origin": "*",
-							"Access-Control-Allow-Headers": "X-Requested-With",
-							"Access-Control-Allow-Credentials": "true"
-						}
-					}).then(a => {
-						console.log(a.data)
-					})	
-			}
+				const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95fce1ea5c2190183b85f3e518de44cd`;
+
+
+				return $http.get(url).then(item => {
+					$scope.city = item.data.name;
+					$scope.temp = `${item.data.main.temp - 273.15} °C`;
+					$scope.weather = item.data.weather[0].main;
+				});
+
+			};
 	}])
 
-angular.module("root", ["factory"])
-	.controller("main-Ctrl", ["$scope", "sendHttp", 
-		function ($scope, sendHttp) {
-			$scope.text = "";
-			$scope.send = sendHttp;
-	}])
+
+
+
+
+
+
+
+
+				//const trusted = $sce.trustAsResourceUrl(url);
+
+				//console.log(trusted)
+
+						// return $http({
+				// 		method: "GET",
+				// 		url : `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95fce1ea5c2190183b85f3e518de44cd`,
+				// 		headers: {
+				// 			"Access-Control-Allow-Origin": "*",
+				// 			"Access-Control-Allow-Headers": "X-Requested-With",
+				// 			"Access-Control-Allow-Credentials": "true"
+				// 		}
+				// 	}).then(a => {
+				// 		console.log(a.data)
+				// 	})	
