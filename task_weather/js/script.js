@@ -12,19 +12,25 @@ angular.module("root", [])
 			$scope.temp = null;
 			$scope.weather = null;
 
-			$scope.send = function(arg) {
+			$scope.optionArray = ["Minsk", "Moscow", "London", "Berlin", "Paris"];
+
+			$scope.send = function(arg) {console.dir(arg.target)
 				const cityName = arg.target.children[1].value;
 
 				const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95fce1ea5c2190183b85f3e518de44cd`;
 
-
 				return $http.get(url).then(item => {
 					$scope.city = item.data.name;
-					$scope.temp = `${item.data.main.temp - 273.15} °C`;
+					$scope.temp = `${~~(item.data.main.temp - 273.15)} °C`;
 					$scope.weather = item.data.weather[0].main;
 				});
 
 			};
+
+			$scope.save = function (arg) {
+				console.log(arg)
+				$scope.optionArray.push(arg)
+			}
 	}])
 
 
