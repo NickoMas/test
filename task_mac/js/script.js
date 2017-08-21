@@ -1,12 +1,7 @@
 "use strict"
 
 const mainInput = document.querySelector(".enterMAC");
-const inputReg = /[a-za-я\d:]+/ig; //[a-za-я\d:]+
-
-document.querySelector(".kick").addEventListener("input", (e) => {
-	console.log(e)
-	//if(true) return e.target.value = e.target.value.slice(0,-1);
-})
+const inputReg = /[a-za-я\d:]+/ig;
 
 const validateInput = function (event) {
 	let input = event.target.value;
