@@ -13,26 +13,19 @@
 <body ng-controller="main_Ctrl">
 	<section class="wrapper">
 		<header>
-		<form name="cities" id="citiesForm" ng-submit="send($event)">
+		<form name="cities" id="citiesForm" ng-submit="send($event)" >
 
-			<select name="cities" ng-model="text" ng-options="obj for obj in optionArray">
-				<option value="Minsk">Minsk</option>
+			<select name="cities" ng-model="info.text" ng-options="obj for obj in optionArray">
+				<option value="Minsk" ng-selected="info.text">Minsk</option>
 			</select>
-			<input class="enterText" type="text" ng-model="text" value="{{text}}" placeholder="Type city name here">
-			<input type="submit" value="CLick">
-			<input type="button" value="Save city" ng-click="save(text)">
+			<input class="enterText" type="text" ng-model="info.text" value="{{info.text}}" placeholder="Type city name here">
+			<input type="submit" value="Get weather">
+			<input type="button" value="Save city" ng-click="save(info.text)">
 		</form>
 		</header>
 
-		<main>
-		
-			<section class="info">
-				<p>Your city is: {{city}}</p>
-				<p>Temperature: {{temp}}</p>
-				<p>Overall weather: {{weather}}</p>
-			</section>
+		<weather></weather>
 
-		</main>
 	</section>
 	
 	<script src="js/script.js"></script>
