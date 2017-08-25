@@ -40,7 +40,7 @@ const validateInput = function (event) {
 
 	const delimit = function (inputPart) {
 		if (inputPart.length === 2) {
-console.log('ok')
+
 			if(input.length === 17) {
 				mainInput.value = mainInput.value.toUpperCase()
 				return mainInput.readOnly = true;
