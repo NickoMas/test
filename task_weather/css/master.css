@@ -6,9 +6,10 @@ section.wrapper {
     display: flex;
     flex-flow: column;
     align-items: center;
-    padding: 100px;
+    text-align: center;
+    padding: 50px;
     width: 50%;
-    margin: 10%auto;
+    margin: 10% auto;
     border: 1px solid;
     border-radius: 10px;
     box-shadow: 0px 9px 20px 2px #263738;
